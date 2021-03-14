@@ -1,0 +1,46 @@
+.parent{
+	-fx-background-color: white;
+}
+.sidebar{
+	-fx-background-color: #6747CD;
+}
+
+.forgetBtn:hover{
+	-fx-text-fill: #6747CD;
+}
+
+.loginBtn{
+	-fx-background-color: #6747CD;
+	-fx-text-fill: #FFF;
+	-fx-background-radius: 5px;
+}
+.loginBtn:hover{
+	-fx-background-color: "transparent";
+	-fx-background-radius: 5px;
+	-fx-text-fill: #6747CD;
+	-fx-border-color: #6747CD;
+	-fx-border-width: 2px;
+	-fx-border-style: solid;
+	-fx-border-radius: 5px;
+}
+.loginBtn:hover .glyph-icon,.loginBtn:hover .glyph-icon{
+	-fx-text-fill: #6747CD;
+}
+.closeBtn{
+	-fx-fill: #545454;
+}
+.closeBtn:hover{
+	-fx-fill: #ff6666;
+}
+.backBtn{
+	-fx-fill: #545454;
+}
+.backBtn:hover{
+	-fx-fill: #6747CD;
+}
+.passwordVisible{
+	-fx-fill: #545454;
+}
+.passwordVisible:hover{
+	-fx-fill: #6747CD;
+}

@@ -6,10 +6,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import models.Payment;
-import system.Log;
+import utilities.Utilitie;
 
 public class PaymentDao extends Dao {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Payment isExists(ArrayList<?> list, Object payement) {
 		// TODO Auto-generated method stub
@@ -21,6 +22,7 @@ public class PaymentDao extends Dao {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void insert(ArrayList<?> list) {
 		// TODO Auto-generated method stub
@@ -39,8 +41,7 @@ public class PaymentDao extends Dao {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			prepareStatement.execute();
 		} catch (SQLException ex) {
-			Log.addLog(
-					new Log(PaymentDao.class.getName(), "Erreur lors de l'insertion d'un utilisateur " + ex.getMessage()));
+			Utilitie.error(PaymentDao.class.getName(), ex);
 		}
 		this.closeConnection();
 
@@ -59,14 +60,12 @@ public class PaymentDao extends Dao {
 				while (rs.next()) {
 					liste.add(new Payment(rs.getInt("id"), rs.getString("mode"), rs.getBoolean("state"),rs.getInt("amount"), rs.getDate("date"),rs.getTime("time"),rs.getString("reference"), rs.getInt("userId"), rs.getInt("userId")));
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				Log.addLog(
-						new Log(PaymentDao.class.getName(), "Erreur lors du listing des utlisateurs " + e.getMessage()));
+			} catch (SQLException ex) {
+				Utilitie.error(PaymentDao.class.getName(), ex);
 			}
 
-		} catch (SQLException e) {
-			Log.addLog(new Log(PaymentDao.class.getName(), "Erreur lors du listing des utlisateurs " + e.getMessage()));
+		} catch (SQLException ex) {
+			Utilitie.error(PaymentDao.class.getName(), ex);
 		}
 		return liste;
 	}
@@ -80,7 +79,7 @@ public class PaymentDao extends Dao {
                 PreparedStatement prepareStatement = connection.prepareStatement(sql);
                 prepareStatement.execute();
             } catch (SQLException ex) {
-                
+            	Utilitie.error(PaymentDao.class.getName(), ex);
             }
 
 	}
@@ -95,7 +94,7 @@ public class PaymentDao extends Dao {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			prepareStatement.execute();
 		} catch (SQLException ex) {
-			
+			Utilitie.error(PaymentDao.class.getName(), ex);
 		}
 	}
 

@@ -1,5 +1,7 @@
 package models;
 
+import utilities.Utilitie;
+
 public class User {
 	private int id;
 	private String numCni;
@@ -12,6 +14,17 @@ public class User {
 	private boolean isAdmin;
 	private boolean isActive;
 	
+	
+	
+	/**
+	 * @param mail
+	 * @param password
+	 */
+	public User(String mail, String password) {
+		this.mail = mail;
+		this.password = Utilitie.encyptPassword(password);
+	}
+
 	/**
 	 * @param numCni
 	 * @param name
@@ -24,12 +37,11 @@ public class User {
 	 */
 	public User(String numCni, String name, String lastName, String phone, String mail, String password,
 			boolean isAdmin, boolean isActive) {
+		this(mail,password);
 		this.numCni = numCni;
 		this.name = name;
 		this.lastName = lastName;
 		this.phone = phone;
-		this.mail = mail;
-		this.password = password;
 		this.isAdmin = isAdmin;
 		this.isActive = isActive;
 	}
@@ -164,7 +176,7 @@ public class User {
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
-		this.password = password;
+		this.password =  Utilitie.encyptPassword(password);;
 	}
 
 	/**

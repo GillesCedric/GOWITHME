@@ -6,11 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import models.Participate;
-import models.Payment;
-import dao.Dao; 
-import java.sql.Connection;
-import java.util.ArrayList;
-import system.Log;
+import utilities.Utilitie;
 
 public  class ParticipateDao extends Dao {
 	
@@ -25,14 +21,15 @@ public  class ParticipateDao extends Dao {
 	public Participate isExists(ArrayList<?> list, Object participate) {
 		// TODO Auto-generated method stub
 		ArrayList<Participate> dataList = (ArrayList<Participate>) list;
-		for (Participate participate : dataList) {
-			if (participate.equals(participate))
-				return participate;
+		for (Participate participate1 : dataList) {
+			if (participate1.equals(participate1))
+				return participate1;
 
 		}
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void insert(ArrayList<?> list) {
 		// TODO Auto-generated method stub
@@ -52,10 +49,9 @@ public  class ParticipateDao extends Dao {
 				PreparedStatement prepareStatement = connection.prepareStatement(sql);
 				prepareStatement.execute();
 			} catch (SQLException ex) {
-
+				Utilitie.error(ParticipateDao.class.getName(), ex);
 			}
 			this.closeConnection();
-
 		}
 
 
@@ -72,15 +68,12 @@ public  class ParticipateDao extends Dao {
 				while (rs.next()) {
 					liste.add(new Participate(rs.getInt("id"), rs.getInt("seats"), rs.getInt("mark"),rs.getString("comment"),rs.getInt("userId"),rs.getInt("travelId")));
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-
-				Log.addLog(
-						new Log(ParticipateDao.class.getName(), "Erreur lors du listing des utlisateurs " + e.getMessage()));
+			} catch (SQLException ex) {
+				Utilitie.error(ParticipateDao.class.getName(), ex);
 			}
 
-		} catch (SQLException e) {
-			Log.addLog(new Log(ParticipateDao.class.getName(), "Erreur lors du listing des utlisateurs " + e.getMessage()));
+		} catch (SQLException ex) {
+			Utilitie.error(ParticipateDao.class.getName(), ex);
 		}
 		
 		return liste;
@@ -97,7 +90,7 @@ public  class ParticipateDao extends Dao {
                 PreparedStatement prepareStatement = connection.prepareStatement(sql);
                 prepareStatement.execute();
             } catch (SQLException ex) {
-            
+            	Utilitie.error(ParticipateDao.class.getName(), ex);
             }
 	}
 
@@ -112,7 +105,7 @@ public  class ParticipateDao extends Dao {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			prepareStatement.execute();
 		} catch (SQLException ex) {
-			
+			Utilitie.error(ParticipateDao.class.getName(), ex);
 		}
 		
 	}

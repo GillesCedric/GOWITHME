@@ -7,13 +7,14 @@ package utilities;
  * @description Cette est utilisé pour gérer tous les paramètres de  l'application
  * @public
  */
-public class Parameter {
+public class Data {
     public static final String SEPARATOR = System.getProperty("file.separator");
     public static final String SYSTEMNAME = System.getProperty("user.name");
-    //public static final String LOCATION = "C:"+separator+"Users"+separator+""+System.getProperty("user.name")+""+separator;
-    public static final String LOCATION = "E:"+SEPARATOR;
-    public static final String APPNAME = "Covoiturage App";
+    public static final String LOCATION = "C:"+SEPARATOR+"Users"+SEPARATOR+""+SYSTEMNAME+""+SEPARATOR;
+    //public static final String LOCATION = "E:"+SEPARATOR;
+    public static final String APPNAME = "GOWITHME";
     public static final String LOG = SYSTEMNAME+".log";
+    public static final String PARAMETER = "parameter.data";
     public static final String DBNAME = "covoiturageapp";
     public static final String USERNAME = "root";
     public static final String PASSWORD = "";

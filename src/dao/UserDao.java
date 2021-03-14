@@ -7,9 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import models.User;
-import system.Log;
+import utilities.Utilitie;
 
 /**
  * @author Gilles Cédric
@@ -54,8 +53,7 @@ public class UserDao extends Dao {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			prepareStatement.execute();
 		} catch (SQLException ex) {
-			Log.addLog(
-					new Log(UserDao.class.getName(), "Erreur lors de l'insertion d'un utilisateur " + ex.getMessage()));
+			Utilitie.error(UserDao.class.getName(), ex);
 		}
 		this.closeConnection();
 
@@ -63,6 +61,7 @@ public class UserDao extends Dao {
 
 	@Override
 	public ArrayList<?> list() {
+		this.connectionDatabase();
 		ArrayList<User> liste = new ArrayList<User>();
 		try {
 			String sql = "SELECT * FROM users";
@@ -72,44 +71,43 @@ public class UserDao extends Dao {
 				while (rs.next()) {
 					liste.add(new User(rs.getInt("id"), rs.getString("numCni"), rs.getString("name"),rs.getString("lastName"),rs.getString("phone"),rs.getString("mail"),rs.getString("password"),rs.getString("picture"),rs.getBoolean("isAdmin"),rs.getBoolean("isActive")));
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				Log.addLog(
-						new Log(UserDao.class.getName(), "Erreur lors du listing des utlisateurs " + e.getMessage()));
+			} catch (SQLException ex) {
+				Utilitie.error(UserDao.class.getName(), ex);
 			}
 
-		} catch (SQLException e) {
-			Log.addLog(new Log(UserDao.class.getName(), "Erreur lors du listing des utlisateurs " + e.getMessage()));
+		} catch (SQLException ex) {
+			Utilitie.error(UserDao.class.getName(), ex);
 		}
+		this.closeConnection();
 		return liste;
 	}
 
 	@Override
 	public void update(Object object) {
+		this.connectionDatabase();
 		User user = (User) object;
         String sql = "UPDATE users SET numCni='"+user.getNumCni()+"',name='"+user.getName()+"',lastName='"+user.getLastName()+"',phone='"+user.getPhone()+"',mail='"+user.getMail()+"',password='"+user.getPassword()+"',picture='"+user.getPicture()+"',isAdmin='"+user.isAdmin()+"',isActive='"+user.isActive()+"' WHERE id="+user.getId();
             try {
                 PreparedStatement prepareStatement = connection.prepareStatement(sql);
                 prepareStatement.execute();
             } catch (SQLException ex) {
-                 Log.addLog(new Log(UserDao.class.getName(),"Erreur lors de la modification de l'utilisateur"+user.getName()+" "+ex.getMessage()));
+            	Utilitie.error(UserDao.class.getName(), ex);
             }
-
+            this.closeConnection();
 	}
 
 	@Override
 	public void delete(Object object) {
 		User user = (User) object;
-
+		this.connectionDatabase();
 		String sql = "DELETE FROM users WHERE id=" + user.getId();
 		try {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			prepareStatement.execute();
 		} catch (SQLException ex) {
-			Log.addLog(new Log(UserDao.class.getName(),
-					"Erreur lors de la suppression de l'utilisateur " + user.getName() + " " + ex.getMessage()));
+			Utilitie.error(UserDao.class.getName(), ex);
 		}
-
+		this.closeConnection();
 	}
 
 	

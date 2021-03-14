@@ -11,11 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import system.Log;
-import utilities.Parameter;
+import utilities.Data;
+import utilities.Utilitie;
 
 /**
  *
@@ -32,23 +30,22 @@ public abstract class Dao {
 
   
   public Dao() {   
-	this.dbName = Parameter.DBNAME;
-        this.username = Parameter.USERNAME;
-        this.password = Parameter.PASSWORD;
-        this.port = Parameter.PORT;
-        this.host = Parameter.HOST;
-        this.url = "jdbc:mysql://" + this.host+ ":"+this.port+"/"+this.dbName+"?characterEncoding=utf8";
+	this.dbName = Data.DBNAME;
+        this.username = Data.USERNAME;
+        this.password = Data.PASSWORD;
+        this.port = Data.PORT;
+        this.host = Data.HOST;
+        this.url = "jdbc:mysql://" + this.host+ ":"+this.port+"/"+this.dbName+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&characterEncoding=utf8";
   }
 
    
     protected void connectionDatabase() {
 
-     try {
-       Class.forName("com.mysql.jdbc.Driver");    
+     try {  
        Log.addLog(new Log(Dao.class.getName(),"Connexion à la base de données"));
        this.connection = DriverManager.getConnection(""+this.url,this.username, this.password);
-     } catch (ClassNotFoundException | SQLException e) {
-         JOptionPane.showMessageDialog(null, e.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+     } catch (SQLException ex) {
+    	 Utilitie.error(Dao.class.getName(), ex);
      }
 
    }
@@ -59,12 +56,12 @@ public abstract class Dao {
             this.connection = null;
             Log.addLog(new Log(Dao.class.getName(),"Fermeture de la connexion à la base de données"));
         } catch (SQLException ex) {
-            Logger.getLogger(Dao.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+        	Utilitie.error(Dao.class.getName(), ex);
         }
     }
     
     protected int getLastID(String tableName){
+    	this.connectionDatabase();
         String sql = "SELECT COUNT(id) FROM "+tableName;
         int id = 0;
         try {
@@ -74,8 +71,9 @@ public abstract class Dao {
                     id = rs.getInt(1);
                 }
             } catch (SQLException ex) {
-                 Log.addLog(new Log(UserDao.class.getName(),"Erreur "+ex.getMessage()));
+            	Utilitie.error(Dao.class.getName(), ex);
             }
+        this.closeConnection();
         return id;
     }
     
@@ -103,5 +101,18 @@ public abstract class Dao {
     public abstract void update(Object object);
     
     public abstract void delete(Object object);
+    
+    public ResultSet request(String sql) {
+    	this.connectionDatabase();
+    	 try {
+             PreparedStatement prepareStatement = connection.prepareStatement(sql);
+             ResultSet rs = prepareStatement.executeQuery();
+             return rs;
+         } catch (SQLException ex) {
+        	Utilitie.error(Dao.class.getName(), ex);
+         }
+    	 this.closeConnection();
+    	 return null;
+    }
     
 }
