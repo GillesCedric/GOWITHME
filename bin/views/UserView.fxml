@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="450.0" styleClass="dark-panel" stylesheets="@../application/css/Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="450.0" styleClass="dark-panel" stylesheets="@../css/StyleMain.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserController">
 	<children>
 		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="225.0" prefHeight="30.0" prefWidth="200.0" text="GILLES CEDRIC" textFill="WHITE">
 			<font>
@@ -32,7 +32,7 @@
 		</Label>
       <ImageView fitHeight="170.0" fitWidth="170.0" layoutX="140.0" layoutY="33.0" pickOnBounds="true">
          <image>
-            <Image url="@../application/img/développeur.png" />
+            <Image url="@../img/développeur.png" />
          </image>
       </ImageView>
 	</children>

@@ -23,6 +23,7 @@ public class User {
 	public User(String mail, String password) {
 		this.mail = mail;
 		this.password = Utilitie.encyptPassword(password);
+		this.picture = "";
 	}
 
 	/**
@@ -77,8 +78,16 @@ public class User {
 	 */
 	public User(int id, String numCni, String name, String lastName, String phone, String mail, String password,
 			String picture, boolean isAdmin, boolean isActive) {
-		this(numCni,name,lastName,phone,mail,password,picture,isAdmin,isActive);
+		this.mail = mail;
+		this.password = password;
+		this.picture = picture;
 		this.id = id;
+		this.numCni = numCni;
+		this.name = name;
+		this.lastName = lastName;
+		this.phone = phone;
+		this.isAdmin = isAdmin;
+		this.isActive = isActive;
 	}
 
 	/**

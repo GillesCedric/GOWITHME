@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -18,70 +19,103 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import models.User;
+import system.Lang;
+import system.Parameter;
+import system.Theme;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import utilities.Keyword;
 import utilities.Utilitie;
 
 public class LoginFormController implements Initializable{
 	
 	private UserDao userDao = new UserDao();
 	
-	@FXML
-    private Pane contentArea;
+		@FXML
+		private AnchorPane container;
+		
+	    @FXML
+	    private Label welcome;
 
-    @FXML
-    private JFXTextField email;
+	    @FXML
+	    private Pane contentArea;
 
-    @FXML
-    private JFXPasswordField password;
+	    @FXML
+	    private Label welcomeMessage;
 
-    @FXML
-    private Label forgotPasswordBtn;
+	    @FXML
+	    private Label welcomeSecondMessage;
 
-    @FXML
-    private JFXButton loginBtn;
+	    @FXML
+	    private JFXTextField email;
 
-    @FXML
-    private Label openRegistrationBtn;
+	    @FXML
+	    private JFXPasswordField password;
 
-    @FXML
-    private FontAwesomeIcon closeBtn;
+	    @FXML
+	    private Label forgotPasswordBtn;
+
+	    @FXML
+	    private JFXButton loginBtn;
+
+	    @FXML
+	    private Label newMessage;
+
+	    @FXML
+	    private Label openRegistrationBtn;
+
+	    @FXML
+	    private FontAwesomeIcon closeBtn;
 
     @FXML
     void closeApp(MouseEvent event) {
     	System.exit(0);
     }
+    
+    private void loadLang() {
+    	//Main.resourceBundle = ResourceBundle.getBundle("properties.lang", new Locale("en"));
+    	welcome.setText(Main.resourceBundle.getString("welcome"));
+    	//Utilitie.setParameter(new Parameter(Keyword.lang,Lang.fr));
+    	//Utilitie.setParameter(new Parameter(Keyword.theme,Theme.dark));
+    }
 
     @FXML
-    void login(ActionEvent event) {
+    void login(ActionEvent event) throws IOException {
+    	loadLang();
     	String mail = email.getText();
     	String password = this.password.getText();
     	if(!mail.trim().isEmpty() && !password.trim().isEmpty()) {
 			User user = new User(mail,password);
 			try {
-				ResultSet rs = userDao.request("SELECT * FROM users WHERE mail='"+user.getMail()+"' AND password='"+user.getPassword()+"'");
+				ResultSet rs = userDao.request("SELECT * FROM users WHERE mail='"+user.getMail()+"'");
 				if(rs.next()) {
-					Main.userConnected = new User(rs.getInt("id"), rs.getString("numCni"), rs.getString("name"),rs.getString("lastName"),rs.getString("phone"),rs.getString("mail"),rs.getString("password"),rs.getString("picture"),rs.getBoolean("isAdmin"),rs.getBoolean("isActive"));
-					//@Todo open Main View
+					User userConnected = new User(rs.getInt("id"), rs.getString("cni"), rs.getString("name"),rs.getString("lastName"),rs.getString("phone"),rs.getString("mail"),rs.getString("password"),rs.getString("picture"),rs.getBoolean("isAdmin"),rs.getBoolean("isActive"));
+					if(Utilitie.checkPassword(password, userConnected.getPassword())) {
+						Main.userConnected = userConnected;
+						if(userConnected.isAdmin()) {
+							// @todo Open Admin Main Interface
+						}else {
+							Utilitie.changeScreen("acceuil", Main.loginStage);
+						}
+					}else {
+						Utilitie.showNotification("Erreur", "Veuillez vérifiez votre mot de passe", AnimationType.POPUP, NotificationType.ERROR, 3000);
+					}
 				}else {
-					Alert dialog = new Alert(AlertType.ERROR);
-					dialog.setTitle("Erreur");
-					dialog.setHeaderText("Erreur Base de Données");
-					dialog.setContentText("L'adresse mail et / ou le mot de passe sont incorrects");
-					dialog.showAndWait();
+					Utilitie.showNotification("Erreur", "Veuillez vérifiez votre adresse mail", AnimationType.POPUP, NotificationType.ERROR, 3000);
 				}
 			} catch (SQLException ex) {
-				Utilitie.error(UserDao.class.getName(), ex);
+				Utilitie.error(LoginFormController.class.getName(), ex);
 			}
 		}else {
-			Alert dialog = new Alert(AlertType.ERROR);
-			dialog.setTitle("Erreur");
-			dialog.setContentText("Veuillez remplir tous les champs");
-			dialog.showAndWait();
+            Utilitie.showNotification("Erreur", "Veuillez remplir tous les champs", AnimationType.POPUP, NotificationType.ERROR, 3000);
 		}
     }
 
@@ -95,7 +129,8 @@ public class LoginFormController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-    	
+		loadLang();
+		
 	}
 
 }

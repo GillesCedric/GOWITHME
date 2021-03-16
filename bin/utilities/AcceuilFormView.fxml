@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -29,12 +29,12 @@
 						<Image url="@../img/développeur.png" />
 					</image>
 					<VBox.margin>
-						<Insets bottom="10.0" top="25.0" />
+						<Insets bottom="10.0" top="40.0" />
 					</VBox.margin>
 				</ImageView>
 				<Label fx:id="userName" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="148.0" styleClass="dark" text="Gilles Cédric">
 					<VBox.margin>
-						<Insets bottom="25.0" />
+						<Insets bottom="10.0" />
 					</VBox.margin>
 				</Label>
 				<JFXButton fx:id="acceuilButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Acceuil">
@@ -144,7 +144,7 @@
                         </Label>
                         <Label fx:id="nomLabel" text="Nom" textFill="#e7e5e5">
                            <HBox.margin>
-                              <Insets left="52.0" right="8.0" />
+                              <Insets left="60.0" />
                            </HBox.margin>
                         </Label>
                         <Label fx:id="departLabel" text="Départ" textFill="#e7e5e5">
@@ -181,7 +181,7 @@
                   </HBox>
                   <ScrollPane layoutY="206.0" prefHeight="380.0" prefWidth="830.0" stylesheets="@../../../../Downloads/RestaurantMgtSampleUI-master/RestaurantMgtSampleUI-master/src/home/style.css">
                      <content>
-                        <VBox fx:id="pnItems" prefHeight="378.0" prefWidth="828.0" spacing="5.0" style="-fx-background-color: #02030A;">
+                        <VBox fx:id="pnItems" prefHeight="379.0" prefWidth="830.0" spacing="5.0" style="-fx-background-color: #02030A;">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
@@ -215,7 +215,15 @@
                         <Insets bottom="14.0" />
                      </padding>
                   </JFXTextField>
-                  <FontAwesomeIcon glyphName="CALENDAR" layoutX="397.0" layoutY="125.0" size="2.5em" styleClass="iconsearch" />
+                  <FontAwesomeIcon glyphName="CALENDAR" layoutX="394.0" layoutY="125.0" size="2.5em" styleClass="iconsearch" />
+                  <JFXDatePicker fx:id="dateDatePicker" defaultColor="#05071f" layoutX="394.0" layoutY="93.0" prefHeight="50.0" prefWidth="168.0" rotate="180.0" styleClass="date-picker">
+                     <rotationAxis>
+                        <Point3D y="180.0" />
+                     </rotationAxis>
+                     <padding>
+                        <Insets bottom="14.0" />
+                     </padding>
+                  </JFXDatePicker>
                   <JFXTextField fx:id="dateTextField" layoutX="436.0" layoutY="105.0" prefHeight="34.0" prefWidth="140.0" promptText="Date" styleClass="inputSearch">
                      <font>
                         <Font name="System Bold" size="14.0" />
@@ -244,20 +252,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-            		<FontAwesomeIcon fx:id="lockdownButton" glyphName="TIMES" layoutX="825.0" layoutY="22.0" onMouseClicked="#close" size="1.5em" styleClass="closeBtn" wrappingWidth="16.714285850524902" />
+            		<FontAwesomeIcon fx:id="lockdownButton" glyphName="TIMES" layoutX="823.0" layoutY="16.0" size="1.5em" styleClass="iconsearch" wrappingWidth="16.714285850524902" />
                   <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="22.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                      <image>
                         <Image url="@../img/logo.png" />
                      </image>
                   </ImageView>
-                  <DatePicker fx:id="date" layoutX="396.0" layoutY="101.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="30.0" prefWidth="30.0" rotate="180.0" styleClass="date-picker">
-                     <rotationAxis>
-                        <Point3D y="180.0" z="1.0" />
-                     </rotationAxis>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </DatePicker>
                </children>
       				</Pane>
 			</children>

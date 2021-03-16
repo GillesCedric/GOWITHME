@@ -202,6 +202,44 @@
     -fx-text-fill: black;
 }
 .searchBlock{
-	-fx-background-color: white;
-	-fx-background-radius: 30px;
+	-fx-background-color: #02030A;
+	-fx-border-color: white;
+	-fx-border-radius: 50%;
+}
+.searchBtn{
+	-fx-background-color: #4059a9;
+	-fx-background-radius: 45px;
+}
+.searchBtn2{
+	-fx-background-color: #4059a9;
+}
+.inputSearch{
+	-jfx-unfocus-color: white;
+	-fx-text-fill: white;
+	
+}
+.date-picker{
+	-fx-opacity: 0;
+}
+.date-picker:editable > .arrow-button > * {
+    -fx-opacity: 0; /* Set the node in the button to be visible */
+    -fx-cursor: HAND;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-image: url("/icons/calendar.png"); /* Url of the icon */
+    -fx-background-size: 60% 60%; /* Can be `cover` or `100% 100%` ect. */
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; /* Put the icon in the center */
+}
+.item{
+	-fx-background-color:  #02030A;
+	-fx-background-radius: 5;
+	-fx-background-insets: 0;
+}
+.closeBtn{
+	-fx-fill:white;
+}
+.closeBtn:hover{
+	-fx-fill: #ff6666;
 }

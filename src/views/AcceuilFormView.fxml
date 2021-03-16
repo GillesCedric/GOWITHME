@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,21 +19,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1300.0" styleClass="container" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AcceuilFormController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1060.0" styleClass="container" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AcceuilFormController">
 	<children>
-		<VBox alignment="TOP_CENTER" layoutY="-25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="210.0" styleClass="menu">
+		<HBox alignment="CENTER" layoutX="228.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="810.0" spacing="60.0" styleClass="searchBlock" />
+		<VBox alignment="TOP_CENTER" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="210.0" styleClass="menu">
 			<children>
 				<ImageView fx:id="userProfile" fitHeight="120.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
 					<image>
 						<Image url="@../img/développeur.png" />
 					</image>
 					<VBox.margin>
-						<Insets bottom="10.0" top="40.0" />
+						<Insets bottom="10.0" top="25.0" />
 					</VBox.margin>
 				</ImageView>
 				<Label fx:id="userName" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="148.0" styleClass="dark" text="Gilles Cédric">
 					<VBox.margin>
-						<Insets bottom="10.0" />
+						<Insets bottom="25.0" />
 					</VBox.margin>
 				</Label>
 				<JFXButton fx:id="acceuilButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Acceuil">
@@ -49,7 +52,7 @@
 						<String fx:value="dark" />
 					</styleClass>
 				</JFXButton>
-				<JFXButton fx:id="newReservationButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Nouvelle Reservation">
+				<JFXButton fx:id="newReservationButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Nouveau Voyage">
 					<graphic>
 						<FontAwesomeIcon glyphName="PLUS" size="2.5em" styleClass="white" />
 					</graphic>
@@ -64,9 +67,9 @@
 						<String fx:value="dark" />
 					</styleClass>
 				</JFXButton>
-				<JFXButton fx:id="listeChambresButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Liste des chambres">
+				<JFXButton fx:id="listeChambresButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Mes Voyages">
 					<graphic>
-						<FontAwesomeIcon glyphName="BED" size="2.5em" styleClass="white" />
+						<FontAwesomeIcon glyphName="CAR" size="2.5em" styleClass="white" />
 					</graphic>
 					<VBox.margin>
 						<Insets bottom="20.0" />
@@ -79,7 +82,7 @@
 						<String fx:value="dark" />
 					</styleClass>
 				</JFXButton>
-				<JFXButton fx:id="listeClientsButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="359.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Liste des clients">
+				<JFXButton fx:id="listeClientsButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="359.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Mes Réservations">
 					<graphic>
 						<FontAwesomeIcon glyphName="BOOK" size="2.5em" styleClass="white" />
 					</graphic>
@@ -126,37 +129,143 @@
 				</JFXButton>
 			</children>
 		</VBox>
-		<Label layoutX="228.0" layoutY="31.0" prefHeight="27.0" prefWidth="250.0" styleClass="dark" text="Informations sur l'hôtel" textFill="#323232">
+		<StackPane layoutX="212.0" prefHeight="600.0" prefWidth="848.0">
+			<children>
+				<Pane fx:id="listeReservationsPanel" prefHeight="200.0" prefWidth="200.0" />
+				<Pane fx:id="listeVoyagesPanel" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" />
+      				<Pane fx:id="acceuilPanelNew" prefHeight="510.0" prefWidth="848.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="154.0" prefHeight="60.0" prefWidth="810.0" style="-fx-background-color: #02030A;">
+                     <children>
+                        <Label fx:id="chauffeurLabel" text="Chauffeur" textFill="#e7e5e5">
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="nomLabel" text="Nom" textFill="#e7e5e5">
+                           <HBox.margin>
+                              <Insets left="52.0" right="8.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="departLabel" text="Départ" textFill="#e7e5e5">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="heureDepartLabel" text="Heure Départ" textFill="#e7e5e5">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="destinationLabel" layoutX="398.0" layoutY="32.0" text="Destination" textFill="#e7e5e5">
+                           <HBox.margin>
+                              <Insets left="45.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="heureArriveeLabel" layoutX="470.0" layoutY="32.0" text="Heure Arrivée" textFill="#e7e5e5">
+                           <HBox.margin>
+                              <Insets left="45.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="placeLabel" layoutX="542.0" layoutY="32.0" text="Place" textFill="#e7e5e5">
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="montantLabel" layoutX="642.0" layoutY="32.0" text="Montant" textFill="#e7e5e5">
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <ScrollPane layoutY="206.0" prefHeight="380.0" prefWidth="830.0" stylesheets="@../../../../Downloads/RestaurantMgtSampleUI-master/RestaurantMgtSampleUI-master/src/home/style.css">
+                     <content>
+                        <VBox fx:id="pnItems" prefHeight="378.0" prefWidth="828.0" spacing="5.0" style="-fx-background-color: #02030A;">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <FontAwesomeIcon glyphName="CIRCLE_ALT" layoutX="30.0" layoutY="125.0" size="2.5em" styleClass="iconsearch" />
+                  <JFXTextField fx:id="depart" layoutX="62.0" layoutY="105.0" prefHeight="30.0" prefWidth="140.0" promptText="Départ" styleClass="inputSearch" unFocusColor="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="14.0" />
+                     </padding>
+                  </JFXTextField>
+                  <FontAwesomeIcon glyphName="CIRCLE_ALT" layoutX="210.0" layoutY="125.0" size="2.5em" styleClass="iconsearch" />
+                  <JFXTextField fx:id="destination" layoutX="245.0" layoutY="105.0" prefHeight="34.0" prefWidth="140.0" promptText="Destination" styleClass="inputSearch">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="14.0" />
+                     </padding>
+                  </JFXTextField>
+                  <FontAwesomeIcon glyphName="CAR" layoutX="584.0" layoutY="124.0" size="2.5em" styleClass="iconsearch" />
+                  <JFXTextField fx:id="nbPlace" layoutX="628.0" layoutY="105.0" prefHeight="30.0" prefWidth="140.0" promptText="Nombre de place" styleClass="inputSearch">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="14.0" />
+                     </padding>
+                  </JFXTextField>
+                  <FontAwesomeIcon glyphName="CALENDAR" layoutX="397.0" layoutY="125.0" size="2.5em" styleClass="iconsearch" />
+                  <JFXTextField fx:id="dateTextField" layoutX="436.0" layoutY="105.0" prefHeight="34.0" prefWidth="140.0" promptText="Date" styleClass="inputSearch">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="14.0" />
+                     </padding>
+                  </JFXTextField>
+                  <Pane layoutX="764.0" layoutY="91.0" prefHeight="50.0" prefWidth="33.0" styleClass="searchBtn2">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Pane>
+                  <JFXButton fx:id="searchButton" ellipsisString="" layoutX="764.0" layoutY="91.0" onAction="#search" prefHeight="50.0" prefWidth="69.0" styleClass="searchBtn" text=" ">
+                     <graphic>
+                        <FontAwesomeIcon glyphName="SEARCH" size="2.5em" styleClass="iconsearch">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </FontAwesomeIcon>
+                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+            		<FontAwesomeIcon fx:id="lockdownButton" glyphName="TIMES" layoutX="825.0" layoutY="22.0" onMouseClicked="#close" size="1.5em" styleClass="closeBtn" wrappingWidth="16.714285850524902" />
+                  <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="22.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@../img/logo.png" />
+                     </image>
+                  </ImageView>
+                  <DatePicker fx:id="date" layoutX="396.0" layoutY="101.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="30.0" prefWidth="30.0" rotate="180.0" styleClass="date-picker">
+                     <rotationAxis>
+                        <Point3D y="180.0" z="1.0" />
+                     </rotationAxis>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </DatePicker>
+               </children>
+      				</Pane>
+			</children>
+		</StackPane>
+		<Label layoutX="287.0" layoutY="27.0" prefHeight="27.0" prefWidth="168.0" styleClass="dark" text="GOWITHME" textFill="#323232">
 			<font>
 				<Font name="Arial" size="24.0" />
 			</font>
 		</Label>
-		<HBox alignment="CENTER" layoutX="228.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1050.0" spacing="60.0" styleClass="searchBlock" />
-		<StackPane layoutX="228.0" layoutY="174.0">
-			<children>
-				<Pane fx:id="listeChambresPanel" prefHeight="200.0" prefWidth="200.0">
-					<children>
-						<JFXTreeTableView fx:id="listeChambre" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1050.0" />
-					</children>
-				</Pane>
-				<Pane fx:id="listeClientsPanel" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
-					<children>
-						<JFXTreeTableView fx:id="listeClient" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1050.0" />
-					</children>
-				</Pane>
-				<Pane fx:id="acceuilPanelNew" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1050.0">
-					<children>
-						<TreeTableView fx:id="listInformations" prefHeight="400.0" prefWidth="1050.0">
-							<columns>
-								<TreeTableColumn prefWidth="75.0" text="C1" />
-								<TreeTableColumn prefWidth="75.0" text="C2" />
-							</columns>
-						</TreeTableView>
-					</children>
-				</Pane>
-			</children>
-		</StackPane>
-		<FontAwesomeIcon glyphName="SEARCH" layoutX="1226.0" layoutY="66.0" size="1.7em" styleClass="iconsearch" />
-		<FontAwesomeIcon fx:id="lockdownButton" glyphName="TIMES" layoutX="1280.0" layoutY="19.0" size="1.5em" styleClass="iconsearch" wrappingWidth="16.714285850524902" />
 	</children>
 </AnchorPane>
