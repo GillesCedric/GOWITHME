@@ -1,7 +1,7 @@
 package utilities;
 
+
 import java.util.ArrayList;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import application.Main;
@@ -161,6 +161,9 @@ public class Utilitie {
 				Main.stages.get(0).show();
 				lock.close();
 			break;
+			case "setting" :
+				Main.stages.get(2).setScene(Main.scenes.get(2));
+				Main.stages.get(2).show();
 		}
 	}
 	

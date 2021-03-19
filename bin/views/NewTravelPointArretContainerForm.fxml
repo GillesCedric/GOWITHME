@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewTravelPointArretContainerFormController">
+   <children>
+      <Label layoutX="59.0" layoutY="16.0" prefHeight="72.0" prefWidth="483.0" text="Où préférez vous prendre des passagers supplémentaires ?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="suivant" layoutX="458.0" layoutY="273.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#next" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" text="Suivant">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton fx:id="precedent" layoutX="37.0" layoutY="273.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#previous" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" text="Précédent">
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" size="1.3em" />
+         </graphic>
+      </JFXButton>
+      <FontAwesomeIcon fill="WHITE" glyphName="ARROW_RIGHT" layoutX="527.0" layoutY="298.0" size="1.3em" />
+      <Label fx:id="label1" layoutX="59.0" layoutY="132.0" prefHeight="20.0" prefWidth="200.0" text="Label" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXCheckBox fx:id="chekbox1" layoutX="320.0" layoutY="133.0" text=" " textFill="WHITE" visible="false" />
+      <Label fx:id="label2" layoutX="59.0" layoutY="163.0" prefHeight="20.0" prefWidth="200.0" text="Label" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXCheckBox fx:id="chekbox2" layoutX="320.0" layoutY="164.0" text=" " textFill="WHITE" visible="false" />
+      <Label fx:id="label3" layoutX="59.0" layoutY="194.0" prefHeight="20.0" prefWidth="200.0" text="Label" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXCheckBox fx:id="chekbox3" layoutX="320.0" layoutY="195.0" text=" " textFill="WHITE" visible="false" />
+      <Label fx:id="label4" layoutX="59.0" layoutY="225.0" prefHeight="20.0" prefWidth="200.0" text="Label" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXCheckBox fx:id="chekbox4" layoutX="320.0" layoutY="226.0" text=" " textFill="WHITE" visible="false" />
+      <Label layoutX="59.0" layoutY="123.0" styleClass="linkVisible" text="Ajouter une étape" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+   </children>
+</Pane>

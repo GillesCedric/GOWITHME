@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="450.0" styleClass="dark-panel" stylesheets="@../css/StyleMain.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingFormController">
+	<children>
+		<Label layoutX="38.0" layoutY="9.0" text="THEME" textFill="WHITE">
+			<font>
+				<Font name="System Bold" size="12.0" />
+			</font>
+		</Label>
+		<Label layoutX="38.0" layoutY="27.0" prefHeight="40.0" prefWidth="250.0" text="Changer le thème de l'application  (Mode Clair et Mode Sombre)" textFill="#c6bdbd" wrapText="true">
+			<font>
+				<Font name="System Bold" size="12.0" />
+			</font>
+		</Label>
+		<JFXToggleButton fx:id="theme" layoutX="343.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="76.0" />
+		<Label layoutX="38.0" layoutY="110.0" text="LANGUE" textFill="WHITE">
+			<font>
+				<Font name="System Bold" size="12.0" />
+			</font>
+		</Label>
+		<Label layoutX="38.0" layoutY="128.0" prefHeight="40.0" prefWidth="250.0" text="Changer la langue de l'application (Françcais ou Anglais)" textFill="#c6bdbd" wrapText="true">
+			<font>
+				<Font name="System Bold" size="12.0" />
+			</font>
+		</Label>
+		<JFXToggleButton fx:id="lang" layoutX="343.0" layoutY="122.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="76.0" />
+		<Label layoutX="38.0" layoutY="208.0" text="FAVORIS" textFill="WHITE">
+			<font>
+				<Font name="System Bold" size="12.0" />
+			</font>
+		</Label>
+		<Label layoutX="38.0" layoutY="226.0" prefHeight="40.0" prefWidth="250.0" text="Effectuer la recherche de voyage priorisant les chauffeurs favoris" textFill="#c6bdbd" wrapText="true">
+			<font>
+				<Font name="System Bold" size="12.0" />
+			</font>
+		</Label>
+		<JFXToggleButton fx:id="favoris" layoutX="343.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="76.0" />
+		<Label layoutX="38.0" layoutY="307.0" text="TAILLE DE LA POLICE" textFill="WHITE">
+			<font>
+				<Font name="System Bold" size="12.0" />
+			</font>
+		</Label>
+		<JFXSlider fx:id="slider" layoutX="38.0" layoutY="329.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="370.0" />
+		<JFXButton fx:id="cancelButton" layoutX="207.0" layoutY="376.0" onAction="#cancel" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" text="CANCEL">
+			<font>
+				<Font name="System Bold" size="12.0" />
+			</font>
+		</JFXButton>
+		<JFXButton fx:id="saveButton" layoutX="331.0" layoutY="376.0" onAction="#save" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" text="SAVE">
+			<font>
+				<Font name="System Bold" size="12.0" />
+			</font>
+		</JFXButton>
+      <Label layoutX="314.0" layoutY="33.0" text="DARK" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="405.0" layoutY="33.0" text="LIGHT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="336.0" layoutY="134.0" text="FR" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="412.0" layoutY="134.0" text="EN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+	</children>
+</AnchorPane>

@@ -52,7 +52,7 @@
 						<String fx:value="dark" />
 					</styleClass>
 				</JFXButton>
-				<JFXButton fx:id="newReservationButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Nouveau Voyage">
+				<JFXButton fx:id="newVoyageButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Nouveau Voyage">
 					<graphic>
 						<FontAwesomeIcon glyphName="PLUS" size="2.5em" styleClass="white" />
 					</graphic>
@@ -67,7 +67,7 @@
 						<String fx:value="dark" />
 					</styleClass>
 				</JFXButton>
-				<JFXButton fx:id="listeChambresButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Mes Voyages">
+				<JFXButton fx:id="mesVoyagesButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Mes Voyages">
 					<graphic>
 						<FontAwesomeIcon glyphName="CAR" size="2.5em" styleClass="white" />
 					</graphic>
@@ -82,7 +82,7 @@
 						<String fx:value="dark" />
 					</styleClass>
 				</JFXButton>
-				<JFXButton fx:id="listeClientsButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="359.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Mes Réservations">
+				<JFXButton fx:id="mesReservationsButton" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="359.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleClicks" prefHeight="50.0" prefWidth="210.0" text="Mes Réservations">
 					<graphic>
 						<FontAwesomeIcon glyphName="BOOK" size="2.5em" styleClass="white" />
 					</graphic>

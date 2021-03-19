@@ -206,6 +206,11 @@
 	-fx-border-color: white;
 	-fx-border-radius: 50%;
 }
+.textFieldBlock{
+	-fx-background-color: #05071F;
+	-fx-border-color: white;
+	-fx-border-radius: 50%;
+}
 .searchBtn{
 	-fx-background-color: #4059a9;
 	-fx-background-radius: 45px;
@@ -242,4 +247,10 @@
 }
 .closeBtn:hover{
 	-fx-fill: #ff6666;
+}
+.linkVisible{
+	-fx-fill: #545454;
+}
+.linkVisible:hover{
+	-fx-fill: #6747CD;
 }

@@ -102,7 +102,7 @@ public class LoginFormController implements Initializable{
 						Main.userConnected = userConnected;
 						if(userConnected.isAdmin()) {
 							// @todo Open Admin Main Interface
-						}else {
+						}else { 
 							Utilitie.changeScreen("acceuil", Main.loginStage);
 						}
 					}else {

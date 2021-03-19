@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -31,7 +30,7 @@ public class Main extends Application{
 	public static List<Scene> scenes = new ArrayList<Scene>();
 	public static Stage loginStage = new Stage();
 	public static Stage acceuilStage = new Stage();
-	//public static Stage settingStage = new Stage();
+	public static Stage settingContainerStage = new Stage();
 	//public static Stage newReservationStage = new Stage();
 
 		@Override
@@ -40,7 +39,7 @@ public class Main extends Application{
 			parameters = Utilitie.readParameters();
 			resourceBundle = ResourceBundle.getBundle("properties.lang", new Locale(Utilitie.getParameter(Keyword.lang).getValue().name()));	
 			if(Utilitie.getParameter(Keyword.theme).getValue().equals(Theme.dark)) {
-				css = "/css/style.css";
+				css = "/css/styleDark.css";
 			}else {
 				css = "/css/styleMain.css";
 			}
@@ -50,12 +49,12 @@ public class Main extends Application{
 				
 				roots.add(FXMLLoader.load(getClass().getResource("/views/LoginForm.fxml")));
 				roots.add(FXMLLoader.load(getClass().getResource("/views/AcceuilFormView.fxml")));
-				//roots.add(FXMLLoader.load(getClass().getResource("/views/SettingFormView.fxml")));
+				roots.add(FXMLLoader.load(getClass().getResource("/views/SettingContainerForm.fxml")));
 				//roots.add(FXMLLoader.load(getClass().getResource("/views/ReservationFormView.fxml")));
 				
 				stages.add(loginStage);
 				stages.add(acceuilStage);
-				//stages.add(settingStage);
+				stages.add(settingContainerStage);
 				//stages.add(newReservationStage);
 				
 				for(Stage s : stages) {
@@ -73,7 +72,7 @@ public class Main extends Application{
 
 				stages.get(0).show();
 			} catch(Exception e) {
-				e.printStackTrace();
+				Utilitie.error(Main.class.getName(), e);
 			}
 		}
 		
