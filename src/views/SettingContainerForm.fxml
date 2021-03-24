@@ -40,7 +40,7 @@
 				</JFXButton>
 				<JFXButton fx:id="favorisButton" alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="25.0" onAction="#openFavoris" prefHeight="60.0" prefWidth="70.0" styleClass="main-btns">
 					<graphic>
-						<FontAwesomeIcon glyphName="HEART" size="2em" styleClass="icons" />
+						<FontAwesomeIcon glyphName="GEARS" size="2em" styleClass="icons" />
 					</graphic>
 					<HBox.margin>
 						<Insets left="35.0" />

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXToggleButton;
 
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -29,7 +30,7 @@ public class SettingFormController {
 
     @FXML
     void cancel(ActionEvent event) {
-
+    	Main.settingContainerStage.close();
     }
 
     @FXML

@@ -8,19 +8,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewTravelDestinationFormController">
+<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewTravelDepartHeureFormController">
    <children>
-      <Label layoutX="208.0" layoutY="31.0" prefHeight="50.0" prefWidth="185.0" text="Où allez vous ?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label layoutX="131.0" layoutY="30.0" prefHeight="50.0" prefWidth="338.0" text="A quelle heure partez vous ?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <Pane layoutX="50.0" layoutY="120.0" prefHeight="50.0" prefWidth="500.0" styleClass="textFieldBlock">
          <children>
-            <JFXTextField fx:id="depart" layoutX="20.0" layoutY="8.0" prefHeight="40.0" prefWidth="460.0" promptText="Ex: Douala" styleClass="inputSearch">
+            <FontAwesomeIcon glyphName="CLOCK_ALT" layoutX="27.0" layoutY="35.0" size="2.5em" styleClass="iconsearch" />
+            <JFXTextField fx:id="heureTextField" layoutX="61.0" layoutY="4.0" prefHeight="30.0" prefWidth="415.0" promptText="Heure" styleClass="inputSearch">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
+               <padding>
+                  <Insets bottom="14.0" top="10.0" />
+               </padding>
             </JFXTextField>
          </children>
       </Pane>

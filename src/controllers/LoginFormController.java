@@ -4,13 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Locale;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-
 import application.Main;
 import dao.UserDao;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -19,20 +16,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import models.User;
-import system.Lang;
-import system.Parameter;
-import system.Theme;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
-import utilities.Keyword;
 import utilities.Utilitie;
 
 public class LoginFormController implements Initializable{
@@ -120,11 +110,17 @@ public class LoginFormController implements Initializable{
     }
 
     @FXML
-    void openRegistrationForm(MouseEvent event) throws IOException {
-    	Parent root = (Parent)FXMLLoader.load(getClass().getResource("/views/RegistrationForm.fxml"));
-    	contentArea.getChildren().removeAll();
-    	Utilitie.makeTransition(root, contentArea);
-    	contentArea.getChildren().setAll(root);
+    void openRegistrationForm(MouseEvent event) {
+    	Parent root;
+		try {
+			root = (Parent)FXMLLoader.load(getClass().getResource("/views/RegistrationForm.fxml"));
+			contentArea.getChildren().removeAll();
+	    	Utilitie.makeTransitionRandom(root, contentArea);
+	    	contentArea.getChildren().setAll(root);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			Utilitie.error(LoginFormController.class.getName(), e);
+		}
     }
 
 	@Override

@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewTravelDestinationFormController">
+<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewTravelMarqueFormController">
    <children>
-      <Label layoutX="208.0" layoutY="31.0" prefHeight="50.0" prefWidth="185.0" text="Où allez vous ?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label layoutX="66.0" layoutY="40.0" text="Quelle est la marque de votre véhicule ?" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Pane layoutX="50.0" layoutY="120.0" prefHeight="50.0" prefWidth="500.0" styleClass="textFieldBlock">
+      <Pane layoutX="50.0" layoutY="119.0" prefHeight="50.0" prefWidth="500.0" styleClass="textFieldBlock">
          <children>
-            <JFXTextField fx:id="depart" layoutX="20.0" layoutY="8.0" prefHeight="40.0" prefWidth="460.0" promptText="Ex: Douala" styleClass="inputSearch">
+            <JFXTextField fx:id="depart" layoutX="20.0" layoutY="8.0" prefHeight="40.0" prefWidth="460.0" promptText="Ex: Toyota" styleClass="inputSearch">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -29,11 +29,11 @@
             <Insets right="10.0" />
          </padding>
       </JFXButton>
-      <JFXButton fx:id="precedent" layoutX="37.0" layoutY="273.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#previous" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" text="Précédent">
+      <FontAwesomeIcon fill="WHITE" glyphName="ARROW_RIGHT" layoutX="527.0" layoutY="298.0" size="1.3em" />
+      <JFXButton fx:id="precedent" layoutX="30.0" layoutY="272.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#previous" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" text="Précédent">
          <graphic>
             <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" size="1.3em" />
          </graphic>
       </JFXButton>
-      <FontAwesomeIcon fill="WHITE" glyphName="ARROW_RIGHT" layoutX="527.0" layoutY="298.0" size="1.3em" />
    </children>
 </Pane>

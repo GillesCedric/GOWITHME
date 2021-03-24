@@ -31,7 +31,7 @@ public class Main extends Application{
 	public static Stage loginStage = new Stage();
 	public static Stage acceuilStage = new Stage();
 	public static Stage settingContainerStage = new Stage();
-	//public static Stage newReservationStage = new Stage();
+	public static Stage newVoyageStage = new Stage();
 
 		@Override
 		public void start(Stage primaryStage) {
@@ -50,12 +50,12 @@ public class Main extends Application{
 				roots.add(FXMLLoader.load(getClass().getResource("/views/LoginForm.fxml")));
 				roots.add(FXMLLoader.load(getClass().getResource("/views/AcceuilFormView.fxml")));
 				roots.add(FXMLLoader.load(getClass().getResource("/views/SettingContainerForm.fxml")));
-				//roots.add(FXMLLoader.load(getClass().getResource("/views/ReservationFormView.fxml")));
-				
+				roots.add(FXMLLoader.load(getClass().getResource("/views/NewTravelContainerForm.fxml")));
+
 				stages.add(loginStage);
 				stages.add(acceuilStage);
 				stages.add(settingContainerStage);
-				//stages.add(newReservationStage);
+				stages.add(newVoyageStage);
 				
 				for(Stage s : stages) {
 					s.initStyle(StageStyle.UNDECORATED);
@@ -70,7 +70,7 @@ public class Main extends Application{
 					stages.get(i).setResizable(false);
 				}
 
-				stages.get(0).show();
+				stages.get(1).show();
 			} catch(Exception e) {
 				Utilitie.error(Main.class.getName(), e);
 			}

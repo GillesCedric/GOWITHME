@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewTravelPointArretContainerFormController">
+<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewTravelPointArretContainerFormController">
    <children>
       <Label layoutX="59.0" layoutY="16.0" prefHeight="72.0" prefWidth="483.0" text="Où préférez vous prendre des passagers supplémentaires ?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>

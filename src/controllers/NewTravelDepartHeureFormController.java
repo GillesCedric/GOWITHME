@@ -5,17 +5,13 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
 
-public class NewTravelDepartDateFormController {
+public class NewTravelDepartHeureFormController {
 	
 	private NewTravelContainerFormController newTravelContainerFormController;
 
     @FXML
-    private JFXTextField dateTextField;
-
-    @FXML
-    private DatePicker date;
+    private JFXTextField heureTextField;
 
     @FXML
     private JFXButton suivant;
@@ -25,12 +21,12 @@ public class NewTravelDepartDateFormController {
 
     @FXML
     void next(ActionEvent event) {
-    	this.newTravelContainerFormController.next("/views/NewTravelDepartHeureForm.fxml","departHeure");
+    	this.newTravelContainerFormController.next("/views/NewTravelVehiculeForm.fxml","vehicule");
     }
 
     @FXML
     void previous(ActionEvent event) {
-    	this.newTravelContainerFormController.previous("/views/NewTravelPointArretContainerForm.fxml","pointArretContainer");
+    	this.newTravelContainerFormController.previous("/views/NewTravelDepartDateForm.fxml","departDate");
     }
     
     public void setData(NewTravelContainerFormController newTravelContainerFormController) {

@@ -2,6 +2,7 @@ package controllers;
 
 import com.jfoenix.controls.JFXButton;
 
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -26,7 +27,7 @@ public class UserFormController {
 
     @FXML
     void cancel(ActionEvent event) {
-
+    	Main.settingContainerStage.close();
     }
 
     @FXML

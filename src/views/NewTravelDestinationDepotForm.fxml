@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewTravelDepartRamassageFormController">
+<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewTravelDestinationDepotFormController">
    <children>
       <Label layoutX="59.0" layoutY="16.0" prefHeight="72.0" prefWidth="483.0" text="Où shouaitez vous déposer exactement vos passagers ?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
@@ -17,7 +17,7 @@
       </Label>
       <Pane layoutX="50.0" layoutY="120.0" prefHeight="50.0" prefWidth="500.0" styleClass="textFieldBlock">
          <children>
-            <JFXTextField fx:id="depart" layoutX="20.0" layoutY="8.0" prefHeight="40.0" prefWidth="460.0" promptText="Ex: Tradex Yassa" styleClass="inputSearch">
+            <JFXTextField fx:id="depot" layoutX="20.0" layoutY="8.0" prefHeight="40.0" prefWidth="460.0" promptText="Ex: Tradex Yassa" styleClass="inputSearch">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

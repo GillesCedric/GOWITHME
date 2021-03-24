@@ -54,6 +54,7 @@ public class GestionFile {
         } catch (IOException ex) {
         	Alert dialog = new Alert(AlertType.ERROR);
  			dialog.setTitle("Erreur");
+ 			dialog.setHeaderText(GestionFile.class.getName());
  			dialog.setContentText(ex.getMessage());
  			dialog.showAndWait();
         }
@@ -76,6 +77,7 @@ public class GestionFile {
         } catch (FileNotFoundException ex) {
         	Alert dialog = new Alert(AlertType.ERROR);
  			dialog.setTitle("Erreur");
+ 			dialog.setHeaderText(GestionFile.class.getName());
  			dialog.setContentText(ex.getMessage());
  			dialog.showAndWait();
         }
@@ -102,6 +104,7 @@ public class GestionFile {
 		} catch (ClassNotFoundException | IOException ex) {
 			Alert dialog = new Alert(AlertType.ERROR);
  			dialog.setTitle("Erreur");
+ 			dialog.setHeaderText(GestionFile.class.getName());
  			dialog.setContentText(ex.getMessage());
  			dialog.showAndWait();
 		}	
@@ -136,6 +139,7 @@ public class GestionFile {
         } catch (IOException ex) {
 			Alert dialog = new Alert(AlertType.ERROR);
  			dialog.setTitle("Erreur");
+ 			dialog.setHeaderText(GestionFile.class.getName());
  			dialog.setContentText(ex.getMessage());
  			dialog.showAndWait();
 		}	
@@ -164,6 +168,7 @@ public class GestionFile {
                 } catch (IOException ex) {
                     Alert dialog = new Alert(AlertType.ERROR);
         			dialog.setTitle("Erreur");
+        			dialog.setHeaderText(GestionFile.class.getName());
         			dialog.setContentText(ex.getMessage());
         			dialog.showAndWait();
                 }
@@ -187,6 +192,7 @@ public class GestionFile {
      */
     public void run() {
         File directory = new File(Data.LOCATION+ Data.APPNAME);
+        //File directoryUsers = new File(Data.LOCATION+ Data.APPNAME +Data.SEPARATOR+);
         if (isExist(directory)) {
             createFile();
         } else {

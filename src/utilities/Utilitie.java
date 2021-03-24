@@ -1,6 +1,10 @@
 package utilities;
 
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.lang.management.ManagementFactory;
+import java.lang.management.OperatingSystemMXBean;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -19,6 +23,7 @@ import javafx.util.Duration;
 import system.BCrypt;
 import system.GestionFile;
 import system.Log;
+import system.MD5;
 import system.Parameter;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -32,7 +37,7 @@ public class Utilitie {
 	public static final String PASSWORD_REGEX = "^(?=.*\\d).{8,16}$";
 	public static final String TEL_REGEX = "^\\+[0-9]+(6|2)[0-9]+";
 	
-	public static void makeTransition(Parent p, Scene s) {
+	public static void makeTransitionRandom(Parent p, Scene s) {
 		p.setLayoutX(0);
 		p.setLayoutY(0);
 		Timeline timeline = new Timeline();
@@ -54,7 +59,7 @@ public class Utilitie {
 		timeline.play();
 	}
 
-	public static void makeTransition(Parent p, Pane pane) {
+	public static void makeTransitionRandom(Parent p, Pane pane) {
 		p.setLayoutX(0);
 		p.setLayoutY(0);
 		Timeline timeline = new Timeline();
@@ -69,6 +74,27 @@ public class Utilitie {
 		}
 		//p.rotateProperty().set(360);
 		keyframe = new KeyFrame(Duration.seconds(DURATION),keyvalue);
+		timeline.getKeyFrames().add(keyframe);
+		
+		timeline.play();
+	}
+	
+	public static void makeTransition(Parent p, Pane pane,boolean left) {
+		Timeline timeline = new Timeline();
+		KeyValue keyvalue;
+		KeyFrame keyframe;
+
+		//p.setLayoutX(-pane.getWidth());
+		if(left) {
+			p.translateXProperty().set(-pane.getWidth());
+	 		keyvalue = new KeyValue(p.translateXProperty(),0,Interpolator.EASE_IN);
+		}else {
+			p.translateXProperty().set(pane.getWidth());
+	 		keyvalue = new KeyValue(p.translateXProperty(),0,Interpolator.EASE_IN);
+		}
+		//p.rotateProperty().set(360);
+		keyframe = new KeyFrame(Duration.seconds(DURATION),keyvalue);
+		
 		timeline.getKeyFrames().add(keyframe);
 		
 		timeline.play();
@@ -102,6 +128,7 @@ public class Utilitie {
 		Log.addLog(new Log(className,ex.toString()+" : "+ex.getMessage()));
    	 	Alert dialog = new Alert(AlertType.ERROR);
 			dialog.setTitle("Erreur");
+			dialog.setHeaderText(className);
 			dialog.setContentText(ex.getMessage());
 			dialog.showAndWait();
 	}
@@ -151,7 +178,7 @@ public class Utilitie {
 		switch(ecran) {
 			case "acceuil" :
 				Main.stages.get(1).setScene(Main.scenes.get(1));
-				makeTransition(Main.roots.get(1),Main.scenes.get(1));
+				makeTransitionRandom(Main.roots.get(1),Main.scenes.get(1));
 				Main.stages.get(1).show();
 				lock.close();
 			break;
@@ -164,11 +191,48 @@ public class Utilitie {
 			case "setting" :
 				Main.stages.get(2).setScene(Main.scenes.get(2));
 				Main.stages.get(2).show();
+			break;
+			case "newVoyage" :
+				Main.stages.get(3).setScene(Main.scenes.get(3));
+				Main.stages.get(3).show();
+			break;
 		}
 	}
 	
 	public static boolean match(String sequence,String regex) {
 		return Pattern.compile(regex).matcher(sequence).matches();
+	}
+	
+	private static int getAvailableVRAM(){ 
+	    // Obtenir le type d'environnement graphique sous lequel tourne la JVM. 
+	   GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment(); 
+	   // Obtenir le périphérique d'affichage (carte graphique). 
+	   GraphicsDevice device = environment.getDefaultScreenDevice();  
+	   // Calcule le nombre de Méga Octets libres dans la carte graphique. 
+	   int bytes = device.getAvailableAcceleratedMemory(); 
+	   int mbytes = bytes /1048576;  
+	   return mbytes; 
+	}
+	
+	private static double getAvailableProcessor() {
+		OperatingSystemMXBean osMxBean = ManagementFactory.getOperatingSystemMXBean();  
+		com.sun.management.OperatingSystemMXBean privateOsMxBean = (com.sun.management.OperatingSystemMXBean) osMxBean;  
+		return privateOsMxBean.getProcessCpuLoad();
+	}
+	
+	private static long getAvailableMemory() {
+		OperatingSystemMXBean osMxBean = ManagementFactory.getOperatingSystemMXBean(); 
+		com.sun.management.OperatingSystemMXBean privateOsMxBean = (com.sun.management.OperatingSystemMXBean) osMxBean; 
+		return privateOsMxBean.getTotalPhysicalMemorySize();
+	}
+	
+	private static int getNumberOfProcessor() {
+		OperatingSystemMXBean osMxBean = ManagementFactory.getOperatingSystemMXBean(); 
+		return osMxBean.getAvailableProcessors();
+	}
+	
+	public static String genUserUniqueKey() {
+		return MD5.encrypt(Data.APPNAME+getAvailableMemory()+Data.OSNAME+getAvailableProcessor()+Data.OSARCH+getAvailableVRAM()+Data.SYSTEMNAME+getNumberOfProcessor());
 	}
 
 }

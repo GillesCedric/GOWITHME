@@ -8,17 +8,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.NewTravelImmatriculationFormController">
    <children>
-      <Label layoutX="195.0" layoutY="36.0" text="D'où partez vous?" textFill="WHITE">
+      <Label layoutX="24.0" layoutY="38.0" text="Quelle est l'immatriculation de votre véhicule ?" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <Pane layoutX="50.0" layoutY="119.0" prefHeight="50.0" prefWidth="500.0" styleClass="textFieldBlock">
          <children>
-            <JFXTextField fx:id="depart" layoutX="20.0" layoutY="8.0" prefHeight="40.0" prefWidth="460.0" promptText="Ex: Yaoundé" styleClass="inputSearch">
+            <JFXTextField fx:id="depart" layoutX="20.0" layoutY="8.0" prefHeight="40.0" prefWidth="460.0" promptText="Ex: CE 744 DF" styleClass="inputSearch">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -31,5 +30,10 @@
          </padding>
       </JFXButton>
       <FontAwesomeIcon fill="WHITE" glyphName="ARROW_RIGHT" layoutX="527.0" layoutY="298.0" size="1.3em" />
+      <JFXButton fx:id="precedent" layoutX="38.0" layoutY="272.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#previous" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" text="Précédent">
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" glyphName="ARROW_LEFT" size="1.3em" />
+         </graphic>
+      </JFXButton>
    </children>
 </Pane>

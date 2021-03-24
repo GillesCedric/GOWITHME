@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewTravelDepartRamassageFormController">
+<Pane prefHeight="340.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewTravelDestinationFormController">
    <children>
       <Label layoutX="208.0" layoutY="31.0" prefHeight="50.0" prefWidth="185.0" text="Où allez vous ?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>

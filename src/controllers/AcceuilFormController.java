@@ -141,7 +141,7 @@ public void handleClicks(ActionEvent actionEvent) throws IOException {
     	String destination = this.destination.getText();
     	LocalDate date = this.date.getValue();
     	if(!depart.isEmpty() && !destination.isEmpty() && !date.toString().isEmpty() && !this.nbPlace.getText().isEmpty()) {
-    		int nbPlace = Integer.parseInt(this.nbPlace.getText());
+    		//int nbPlace = Integer.parseInt(this.nbPlace.getText());
     		//@todo handle the serach request
     	}
     	

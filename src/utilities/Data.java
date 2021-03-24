@@ -9,6 +9,8 @@ package utilities;
  */
 public class Data {
     public static final String SEPARATOR = System.getProperty("file.separator");
+    public static final String OSNAME = System.getProperty("os.name");
+    public static final String OSARCH = System.getProperty("os.arch");
     public static final String SYSTEMNAME = System.getProperty("user.name");
     public static final String LOCATION = "C:"+SEPARATOR+"Users"+SEPARATOR+""+SYSTEMNAME+""+SEPARATOR;
     //public static final String LOCATION = "E:"+SEPARATOR;

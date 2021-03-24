@@ -35,7 +35,7 @@ public class SettingContainerFormController implements Initializable{
 		try {
 			fxml = FXMLLoader.load(getClass().getResource("/views/CardForm.fxml"));
 			pane.getChildren().removeAll();
-			Utilitie.makeTransition(fxml, pane);
+			Utilitie.makeTransitionRandom(fxml, pane);
 			pane.getChildren().setAll(fxml);
 		} catch (IOException e) {
 			Utilitie.error(SettingContainerFormController.class.getName(), e);
@@ -44,7 +44,15 @@ public class SettingContainerFormController implements Initializable{
 
     @FXML
     void openFavoris(ActionEvent event) {
-
+    	Parent fxml;
+		try {
+			fxml = FXMLLoader.load(getClass().getResource("/views/PreferencesForm.fxml"));
+			pane.getChildren().removeAll();
+			Utilitie.makeTransitionRandom(fxml, pane);
+			pane.getChildren().setAll(fxml);
+		} catch (IOException e) {
+			Utilitie.error(SettingContainerFormController.class.getName(), e);
+		}
     }
 
     @FXML
@@ -53,7 +61,7 @@ public class SettingContainerFormController implements Initializable{
 		try {
 			fxml = FXMLLoader.load(getClass().getResource("/views/SettingForm.fxml"));
 			pane.getChildren().removeAll();
-			Utilitie.makeTransition(fxml, pane);
+			Utilitie.makeTransitionRandom(fxml, pane);
 			pane.getChildren().setAll(fxml);
 		} catch (IOException e) {
 			Utilitie.error(SettingContainerFormController.class.getName(), e);
@@ -66,7 +74,7 @@ public class SettingContainerFormController implements Initializable{
 		try {
 			fxml = FXMLLoader.load(getClass().getResource("/views/UserForm.fxml"));
 			pane.getChildren().removeAll();
-			Utilitie.makeTransition(fxml, pane);
+			Utilitie.makeTransitionRandom(fxml, pane);
 			pane.getChildren().setAll(fxml);
 		} catch (IOException e) {
 			Utilitie.error(SettingContainerFormController.class.getName(), e);
@@ -79,7 +87,7 @@ public class SettingContainerFormController implements Initializable{
 		try {
 			Parent fxml = (Parent)FXMLLoader.load(getClass().getResource("/views/SettingForm.fxml"));
 			pane.getChildren().removeAll();
-			Utilitie.makeTransition(fxml, pane);
+			Utilitie.makeTransitionRandom(fxml, pane);
 			pane.getChildren().setAll(fxml);
 		} catch (IOException e) {
 			Utilitie.error(SettingContainerFormController.class.getName(), e);
