@@ -39,6 +39,9 @@ public class ItemController {
     private Label montant;
 
     @FXML
+    private Label idUser;
+
+    @FXML
     void moreInfo(MouseEvent event) {
 
     }

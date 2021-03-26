@@ -1,4 +1,4 @@
-package system;
+package utilities;
 
 public enum Theme {
 	dark,

@@ -7,7 +7,6 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
-
 import application.Main;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -20,10 +19,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import system.BCrypt;
 import system.GestionFile;
 import system.Log;
-import system.MD5;
 import system.Parameter;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -233,6 +230,20 @@ public class Utilitie {
 	
 	public static String genUserUniqueKey() {
 		return MD5.encrypt(Data.APPNAME+getAvailableMemory()+Data.OSNAME+getAvailableProcessor()+Data.OSARCH+getAvailableVRAM()+Data.SYSTEMNAME+getNumberOfProcessor());
+	}
+	
+	public static double getDistanceBetween2Points(float lat_a, float lng_a, float lat_b, float lng_b) {
+		double d2r = (180 / Math.PI); 
+		//double distance = 0; 
+		//double dlong = (endpoint.getLon() - startpoint.getLon()) * d2r; 
+		//double dlat = (endpoint.getLat() - startpoint.getLat()) * d2r; 
+		//double a = Math.pow(Math.sin(dlat / 2.0), 2) + Math.cos(startpoint.getLat() * d2r) * Math.cos(endpoint.getLat() * d2r) * Math.pow(Math.sin(dlong / 2.0), 2); 
+		double dlong = (lng_b - lng_a) * d2r; 
+		double dlat = (lat_b - lat_a) * d2r; 
+		double a = Math.pow(Math.sin(dlat / 2.0), 2) + Math.cos(lat_a * d2r) * Math.cos(lat_b * d2r) * Math.pow(Math.sin(dlong / 2.0), 2); 
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+		double d = 6367 * c; 
+		return d;
 	}
 
 }

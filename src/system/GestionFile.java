@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import utilities.Data;
 import utilities.Keyword;
+import utilities.Lang;
+import utilities.Theme;
 
 /*
  * @since 28/11/2020
@@ -53,7 +55,7 @@ public class GestionFile {
             printWriter.println(data);
         } catch (IOException ex) {
         	Alert dialog = new Alert(AlertType.ERROR);
- 			dialog.setTitle("Erreur");
+ 			dialog.setTitle("Erreur lors de l'écriture en caractère");
  			dialog.setHeaderText(GestionFile.class.getName());
  			dialog.setContentText(ex.getMessage());
  			dialog.showAndWait();
@@ -76,7 +78,7 @@ public class GestionFile {
             }
         } catch (FileNotFoundException ex) {
         	Alert dialog = new Alert(AlertType.ERROR);
- 			dialog.setTitle("Erreur");
+ 			dialog.setTitle("Erreur lors de la lecture en caractère");
  			dialog.setHeaderText(GestionFile.class.getName());
  			dialog.setContentText(ex.getMessage());
  			dialog.showAndWait();
@@ -103,7 +105,7 @@ public class GestionFile {
 	        objectInputStream.close();
 		} catch (ClassNotFoundException | IOException ex) {
 			Alert dialog = new Alert(AlertType.ERROR);
- 			dialog.setTitle("Erreur");
+ 			dialog.setTitle("Erreur lors de la lecture en binaire");
  			dialog.setHeaderText(GestionFile.class.getName());
  			dialog.setContentText(ex.getMessage());
  			dialog.showAndWait();
@@ -138,7 +140,7 @@ public class GestionFile {
             objectOutputStream.close();
         } catch (IOException ex) {
 			Alert dialog = new Alert(AlertType.ERROR);
- 			dialog.setTitle("Erreur");
+ 			dialog.setTitle("Erreur lors de l'écriture en binaire");
  			dialog.setHeaderText(GestionFile.class.getName());
  			dialog.setContentText(ex.getMessage());
  			dialog.showAndWait();
@@ -167,7 +169,7 @@ public class GestionFile {
                     if (filename.equals(Data.PARAMETER)) this.insertParameters();
                 } catch (IOException ex) {
                     Alert dialog = new Alert(AlertType.ERROR);
-        			dialog.setTitle("Erreur");
+        			dialog.setTitle("Erreur lors de la création des fichiers");
         			dialog.setHeaderText(GestionFile.class.getName());
         			dialog.setContentText(ex.getMessage());
         			dialog.showAndWait();

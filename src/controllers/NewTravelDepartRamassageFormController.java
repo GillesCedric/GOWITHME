@@ -1,12 +1,14 @@
 package controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
-public class NewTravelDepartRamassageFormController {
+public class NewTravelDepartRamassageFormController implements Initializable{
 	
 	private NewTravelContainerFormController newTravelContainerFormController;
 
@@ -32,5 +34,11 @@ public class NewTravelDepartRamassageFormController {
     public void setData(NewTravelContainerFormController newTravelContainerFormController) {
     	this.newTravelContainerFormController = newTravelContainerFormController;
     }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		
+	}
 
 }

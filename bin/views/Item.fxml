@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#moreInfo" prefHeight="90.0" prefWidth="800.0" styleClass="item" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ItemController">
    <children>
         <ImageView fx:id="image" fitHeight="60.0" fitWidth="60.0" layoutX="40.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -33,6 +32,7 @@
       <Label fx:id="heureArrivee" alignment="CENTER" layoutX="537.0" layoutY="31.0" prefHeight="17.0" prefWidth="95.0" text="15h" textFill="#b7c3d7" />
       <Label fx:id="place" layoutX="666.0" layoutY="31.0" text="3" textFill="#b7c3d7" />
       <Label fx:id="montant" alignment="CENTER" layoutX="698.0" layoutY="31.0" prefHeight="17.0" prefWidth="95.0" text="3500 Fcfa" textFill="#b7c3d7" />
+      <Label fx:id="idUser" layoutX="392.0" layoutY="59.0" text="Label" visible="false" />
    </children>
    <cursor>
       <Cursor fx:constant="HAND" />
