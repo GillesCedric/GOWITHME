@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3308
--- Généré le :  ven. 26 mars 2021 à 10:56
+-- Généré le :  lun. 29 mars 2021 à 13:44
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.4.0
 
@@ -24,6 +24,24 @@ SET time_zone = "+00:00";
 DROP DATABASE IF EXISTS `gowithme`;
 CREATE DATABASE IF NOT EXISTS `gowithme` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `gowithme`;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `breakpoints`
+--
+
+DROP TABLE IF EXISTS `breakpoints`;
+CREATE TABLE IF NOT EXISTS `breakpoints` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `point` varchar(80) NOT NULL,
+  `time` time NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `userId` int(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_breakpoints_userId` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -168,6 +186,24 @@ CREATE TABLE IF NOT EXISTS `paypals` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `positions`
+--
+
+DROP TABLE IF EXISTS `positions`;
+CREATE TABLE IF NOT EXISTS `positions` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `longitude` double NOT NULL,
+  `latitude` double NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `userId` int(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_positions_userId` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `preferences`
 --
 
@@ -273,6 +309,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 --
+-- Contraintes pour la table `breakpoints`
+--
+ALTER TABLE `breakpoints`
+  ADD CONSTRAINT `fk_breakpoints_userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Contraintes pour la table `cars`
 --
 ALTER TABLE `cars`
@@ -319,6 +361,12 @@ ALTER TABLE `payments`
 --
 ALTER TABLE `paypals`
   ADD CONSTRAINT `fk_paypals_userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `positions`
+--
+ALTER TABLE `positions`
+  ADD CONSTRAINT `fk_positions_userId` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `preferences`
