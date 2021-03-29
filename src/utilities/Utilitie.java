@@ -193,6 +193,11 @@ public class Utilitie {
 				Main.stages.get(3).setScene(Main.scenes.get(3));
 				Main.stages.get(3).show();
 			break;
+			case "newPoint" :
+				Main.stages.get(4).setScene(Main.scenes.get(4));
+				Main.stages.get(4).show();
+				lock.close();
+			break;
 		}
 	}
 	

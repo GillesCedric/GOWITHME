@@ -17,7 +17,7 @@
       </Label>
       <Pane layoutX="50.0" layoutY="86.0" prefHeight="50.0" prefWidth="500.0" styleClass="textFieldBlock">
          <children>
-            <JFXTextField fx:id="depart" layoutX="25.0" layoutY="8.0" prefHeight="40.0" prefWidth="450.0" promptText="Ex: Edéa, Pharmacie d'édea" styleClass="inputSearch">
+            <JFXTextField fx:id="depart" layoutX="20.0" layoutY="8.0" prefHeight="40.0" prefWidth="460.0" promptText="Ex: Edéa, Pharmacie d'édea" styleClass="inputSearch">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -34,7 +34,7 @@
       <FontAwesomeIcon fx:id="lockdownButton" glyphName="TIMES" layoutX="578.0" layoutY="20.0" onMouseClicked="#close" size="1.5em" styleClass="closeBtn" wrappingWidth="16.714285850524902" />
       <Pane layoutX="51.0" layoutY="165.0" prefHeight="50.0" prefWidth="500.0" styleClass="textFieldBlock">
          <children>
-            <JFXTextField fx:id="heureTextField" layoutX="25.0" layoutY="4.0" onKeyReleased="#handleKey" prefHeight="44.0" prefWidth="450.0" promptText="Heure d'arrivé" styleClass="inputSearch">
+            <JFXTextField fx:id="heureTextField" layoutX="16.0" layoutY="4.0" prefHeight="44.0" prefWidth="460.0" promptText="Heure d'arrivé" styleClass="inputSearch">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

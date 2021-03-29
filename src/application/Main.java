@@ -28,10 +28,12 @@ public class Main extends Application{
 	public static List<Parent> roots = new ArrayList<Parent>();
 	public static List<Stage> stages = new ArrayList<Stage>();
 	public static List<Scene> scenes = new ArrayList<Scene>();
+	public static List<?> controllers = new ArrayList<>();
 	public static Stage loginStage = new Stage();
 	public static Stage acceuilStage = new Stage();
 	public static Stage settingContainerStage = new Stage();
 	public static Stage newVoyageStage = new Stage();
+	public static Stage newPointStage = new Stage();
 
 		@Override
 		public void start(Stage primaryStage) {
@@ -46,16 +48,29 @@ public class Main extends Application{
 			try {
 				//root.getStylesheets().removeAll();
 				//root.getStylesheets().add(getClass().getResource(css).toExternalForm());
+				FXMLLoader login = new FXMLLoader(getClass().getResource("/views/LoginForm.fxml"));
+				FXMLLoader acceuil = new FXMLLoader(getClass().getResource("/views/AcceuilFormView.fxml"));
+				FXMLLoader setting = new FXMLLoader(getClass().getResource("/views/SettingContainerForm.fxml"));
+				FXMLLoader travelContainer = new FXMLLoader(getClass().getResource("/views/NewTravelContainerForm.fxml"));
+				FXMLLoader travelPoint = new FXMLLoader(getClass().getResource("/views/NewTravelPointArretForm.fxml"));
 				
-				roots.add(FXMLLoader.load(getClass().getResource("/views/LoginForm.fxml")));
-				roots.add(FXMLLoader.load(getClass().getResource("/views/AcceuilFormView.fxml")));
-				roots.add(FXMLLoader.load(getClass().getResource("/views/SettingContainerForm.fxml")));
-				roots.add(FXMLLoader.load(getClass().getResource("/views/NewTravelContainerForm.fxml")));
+				roots.add(login.load());
+				roots.add(acceuil.load());
+				roots.add(setting.load());
+				roots.add(travelContainer.load());
+				roots.add(travelPoint.load());
+				
+				controllers.add(login.getController());
+				controllers.add(acceuil.getController());
+				controllers.add(setting.getController());
+				controllers.add(travelContainer.getController());
+				controllers.add(travelPoint.getController());
 
 				stages.add(loginStage);
 				stages.add(acceuilStage);
 				stages.add(settingContainerStage);
 				stages.add(newVoyageStage);
+				stages.add(newPointStage);
 				
 				for(Stage s : stages) {
 					s.initStyle(StageStyle.UNDECORATED);

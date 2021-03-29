@@ -32,7 +32,7 @@
       <Label fx:id="heureArrivee" alignment="CENTER" layoutX="537.0" layoutY="31.0" prefHeight="17.0" prefWidth="95.0" text="15h" textFill="#b7c3d7" />
       <Label fx:id="place" layoutX="666.0" layoutY="31.0" text="3" textFill="#b7c3d7" />
       <Label fx:id="montant" alignment="CENTER" layoutX="698.0" layoutY="31.0" prefHeight="17.0" prefWidth="95.0" text="3500 Fcfa" textFill="#b7c3d7" />
-      <Label fx:id="idUser" layoutX="392.0" layoutY="59.0" text="Label" visible="false" />
+      <Label fx:id="id" layoutX="392.0" layoutY="59.0" text="Label" visible="false" />
    </children>
    <cursor>
       <Cursor fx:constant="HAND" />

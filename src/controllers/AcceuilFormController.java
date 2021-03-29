@@ -131,7 +131,7 @@ public void handleClicks(ActionEvent actionEvent) throws IOException {
 	   Utilitie.changeScreen("setting", null);
    }
    if (actionEvent.getSource() == newVoyageButton) {
-       Utilitie.changeScreen("newVoyage", Main.acceuilStage);
+       Utilitie.changeScreen("newVoyage", null);
    }
 }
 

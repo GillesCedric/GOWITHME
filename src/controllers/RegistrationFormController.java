@@ -97,7 +97,7 @@ public class RegistrationFormController {
     				if(cni.length() == 17 || cni.length() == 9) {
     					if(Utilitie.match(email, Utilitie.EMAIL_REGEX)) {
     						if(Utilitie.match(password, Utilitie.PASSWORD_REGEX)) {
-    							if(Utilitie.match(tel, Utilitie.TEL_REGEX)) {
+    							/*if(Utilitie.match(tel, Utilitie.TEL_REGEX)) {
     								User user = new User(cni, name, lastName, tel, email, password, false, false);
     								ArrayList<User> users = new ArrayList<User>();
     								users.add(user);
@@ -106,7 +106,7 @@ public class RegistrationFormController {
     								Utilitie.showNotification("Inscription effectué", "Votre inscription a été effectué avec succès", AnimationType.POPUP, NotificationType.SUCCESS, 3000);
     							}else {
     	    	        			Utilitie.showNotification("Erreur", "Votre numéro de téléphone n'est pas au format approprié.\nVeuillez ajouter l'indicatif national", AnimationType.POPUP, NotificationType.ERROR, 3000);
-    	    	        		}
+    	    	        		}*/
         	    			}else {
         	        			Utilitie.showNotification("Erreur", "Votre mot de passe doit être entre 8 et 12 caractères\net contenir aumoins 1 chiffre", AnimationType.POPUP, NotificationType.ERROR, 3000);
         	        		}
@@ -133,13 +133,12 @@ public class RegistrationFormController {
     		passwordVisible.setText(password.getText());
         	passwordVisible.setVisible(true);
         	password.setVisible(false);
-        	this.visible = true;
     	}else {
     		password.setText(passwordVisible.getText());
     		password.setVisible(true);
         	passwordVisible.setVisible(false);
-        	this.visible = false;
     	}
+    	this.visible = !this.visible;
     	
     }
 

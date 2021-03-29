@@ -42,13 +42,12 @@ public class UserDao extends Dao {
 
 		String values = "";
 		for (User user : dataList) {
-			values += "('" + user.getNumCni() + "','" + user.getName() + "','" + user.getLastName()+"','"
-					+ user.getPhone() + "','" + user.getMail() + "','" + user.getPassword()+"',"
-					+ user.isAdmin() + "," + user.isActive() + "),";
+			values += "('" + user.getName() + "','" + user.getLastName()+"','"
+					+ user.getPassword()+"),";
 		}
 		values = values.substring(0, values.length() - 1);
 		values += ";";
-		String sql = "INSERT INTO users (cni,name,lastName,phone,mail,password,isAdmin,isActive) VALUES " + values;
+		String sql = "INSERT INTO users (name,lastName,password) VALUES " + values;
 		try {
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			prepareStatement.execute();
@@ -69,7 +68,7 @@ public class UserDao extends Dao {
 			ResultSet rs = ps.executeQuery();
 			try {
 				while (rs.next()) {
-					liste.add(new User(rs.getInt("id"), rs.getString("cni"), rs.getString("name"),rs.getString("lastName"),rs.getString("phone"),rs.getString("mail"),rs.getString("password"),rs.getString("picture"),rs.getBoolean("isAdmin"),rs.getBoolean("isActive")));
+					liste.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("lastName"),rs.getString("password"),rs.getString("picture"),rs.getBoolean("isAdmin"),rs.getBoolean("isActive")));
 				}
 			} catch (SQLException ex) {
 				Utilitie.error(UserDao.class.getName(), ex);
@@ -86,7 +85,7 @@ public class UserDao extends Dao {
 	public void update(Object object) {
 		this.connectionDatabase();
 		User user = (User) object;
-        String sql = "UPDATE users SET cni='"+user.getNumCni()+"',name='"+user.getName()+"',lastName='"+user.getLastName()+"',phone='"+user.getPhone()+"',mail='"+user.getMail()+"',password='"+user.getPassword()+"',picture='"+user.getPicture()+"',isAdmin='"+user.isAdmin()+"',isActive='"+user.isActive()+"' WHERE id="+user.getId();
+        String sql = "UPDATE users SET name='"+user.getName()+"',lastName='"+user.getLastName()+"',password='"+user.getPassword()+"',picture='"+user.getPicture()+"',isAdmin='"+user.isAdmin()+"',isActive='"+user.isActive()+"' WHERE id="+user.getId();
             try {
                 PreparedStatement prepareStatement = connection.prepareStatement(sql);
                 prepareStatement.execute();

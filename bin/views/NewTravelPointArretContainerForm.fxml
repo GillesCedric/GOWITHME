@@ -51,7 +51,7 @@
          </font>
       </Label>
       <JFXCheckBox fx:id="chekbox4" layoutX="320.0" layoutY="226.0" text=" " textFill="WHITE" visible="false" />
-      <Label layoutX="59.0" layoutY="123.0" styleClass="linkVisible" text="Ajouter une étape" textFill="WHITE">
+      <Label fx:id="addPoint" layoutX="59.0" layoutY="123.0" onMouseClicked="#openAddPointForm" styleClass="linkVisible" text="Ajouter une étape" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

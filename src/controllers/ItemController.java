@@ -39,11 +39,15 @@ public class ItemController {
     private Label montant;
 
     @FXML
-    private Label idUser;
+    private Label id;
 
     @FXML
     void moreInfo(MouseEvent event) {
 
+    }
+    
+    public void setData() {
+    	
     }
 
 }

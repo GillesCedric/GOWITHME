@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" styleClass="menu" stylesheets="@../css/styleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TravelInformationsFormController">
+   <children>
+      <Label fx:id="date" layoutX="301.0" layoutY="8.0" text="28/03/2021" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font></Label>
+      <Line endX="354.0" layoutX="397.0" layoutY="78.0" startX="-354.0" stroke="#979191" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line endX="354.0" layoutX="393.0" layoutY="307.0" startX="-354.0" stroke="#979191" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line endX="354.0" layoutX="395.0" layoutY="362.0" startX="-354.0" stroke="#979191" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line endX="354.0" layoutX="394.0" layoutY="461.0" startX="-354.0" stroke="#979191" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Label layoutX="84.0" layoutY="321.0" text="Prix Total pour un passager" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="amount" layoutX="625.0" layoutY="321.0" text="2500 Fcfa" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Pane fx:id="user" layoutX="45.0" layoutY="372.0" onMouseClicked="#openUser" prefHeight="80.0" prefWidth="700.0">
+         <children>
+            <Label fx:id="username" layoutX="36.0" layoutY="8.0" text="Gilles Cédric" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <FontAwesomeIcon fill="WHITE" glyphName="STAR" layoutX="37.0" layoutY="68.28570556640625" size="2.5em" />
+            <Label fx:id="mark" layoutX="72.0" layoutY="44.0" text="4,5 / 5 - 130 avis" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="image" fitHeight="80.0" fitWidth="80.0" layoutX="581.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/développeur.png" />
+               </image>
+            </ImageView>
+            <FontAwesomeIcon fill="WHITE" glyphName="ANGLE_RIGHT" layoutX="680.0" layoutY="52.0" size="3em" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      <Label fx:id="description" alignment="TOP_LEFT" layoutX="84.0" layoutY="473.0" prefHeight="60.0" prefWidth="630.0" text="Description du voyage " textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="38.0" layoutY="86.0" prefHeight="213.0" prefWidth="718.0" styleClass="scroll-pane-blue">
+         <content>
+            <VBox fx:id="pnItems" prefHeight="197.0" prefWidth="717.0" spacing="5.0" styleClass="menu">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <FontAwesomeIcon fx:id="lockdownButton" glyphName="TIMES" layoutX="778.0" layoutY="20.0" onMouseClicked="#close" size="1.5em" styleClass="closeBtn" wrappingWidth="16.714285850524902" />
+      <JFXButton fx:id="reservationBtn" layoutX="315.0" layoutY="639.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#reserve" prefHeight="40.0" prefWidth="160.0" styleClass="reservationBtn" text="Reserver ce voyage" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <Line endX="354.0" layoutX="395.0" layoutY="539.0" startX="-354.0" stroke="#979191" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <ImageView fx:id="imageCar" fitHeight="60.0" fitWidth="60.0" layoutX="636.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/développeur.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="brand" layoutX="84.0" layoutY="552.0" text="Toyata Camry" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="color" layoutX="84.0" layoutY="579.0" text="Noire" textFill="#a4a4a4">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <HBox fx:id="preferences" layoutX="217.0" layoutY="549.0" prefHeight="60.0" prefWidth="405.0" />
+   </children>
+</AnchorPane>

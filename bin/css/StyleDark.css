@@ -254,3 +254,11 @@
 .linkVisible:hover{
 	-fx-fill: #6747CD;
 }
+.scroll-pane-blue{
+	-fx-clear: both;
+	-fx-border-color : #05071F;
+}
+.reservationBtn{
+	-fx-background-color: #4059a9;
+	-fx-background-radius: 45px;
+}

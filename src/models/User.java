@@ -4,91 +4,71 @@ import utilities.Utilitie;
 
 public class User {
 	private int id;
-	private String numCni;
 	private String name;
 	private String lastName;
-	private String phone;
-	private String mail;
 	private String password;
 	private String picture;
 	private boolean isAdmin;
 	private boolean isActive;
 	
 	
-	
-	/**
-	 * @param mail
-	 * @param password
-	 */
-	public User(String mail, String password) {
-		this.mail = mail;
-		this.password = Utilitie.encyptPassword(password);
-		this.picture = "";
-	}
-
-	/**
-	 * @param numCni
-	 * @param name
-	 * @param lastName
-	 * @param phone
-	 * @param mail
-	 * @param password
-	 * @param isAdmin
-	 * @param isActive
-	 */
-	public User(String numCni, String name, String lastName, String phone, String mail, String password,
-			boolean isAdmin, boolean isActive) {
-		this(mail,password);
-		this.numCni = numCni;
-		this.name = name;
-		this.lastName = lastName;
-		this.phone = phone;
-		this.isAdmin = isAdmin;
-		this.isActive = isActive;
-	}
-
-	/**
-	 * @param numCni
-	 * @param name
-	 * @param lastName
-	 * @param phone
-	 * @param mail
-	 * @param password
-	 * @param picture
-	 * @param isAdmin
-	 * @param isActive
-	 */
-	public User(String numCni, String name, String lastName, String phone, String mail, String password, String picture,
-			boolean isAdmin, boolean isActive) {
-		this(numCni,name,lastName,phone,mail,password,isAdmin,isActive);
-		this.picture = picture;
-	}
 
 	/**
 	 * @param id
-	 * @param numCni
 	 * @param name
 	 * @param lastName
-	 * @param phone
-	 * @param mail
 	 * @param password
 	 * @param picture
 	 * @param isAdmin
 	 * @param isActive
 	 */
-	public User(int id, String numCni, String name, String lastName, String phone, String mail, String password,
-			String picture, boolean isAdmin, boolean isActive) {
-		this.mail = mail;
-		this.password = password;
-		this.picture = picture;
+	public User(int id, String name, String lastName, String password, String picture, boolean isAdmin,
+			boolean isActive) {
 		this.id = id;
-		this.numCni = numCni;
 		this.name = name;
 		this.lastName = lastName;
-		this.phone = phone;
+		this.password = password;
+		this.picture = picture;
 		this.isAdmin = isAdmin;
 		this.isActive = isActive;
 	}
+
+	
+	/**
+	 * @param name
+	 * @param lastName
+	 * @param password
+	 * @param isAdmin
+	 * @param isActive
+	 */
+	public User(String name, String lastName, String password, boolean isAdmin, boolean isActive) {
+		this.name = name;
+		this.lastName = lastName;
+		this.password = password;
+		this.isAdmin = isAdmin;
+		this.isActive = isActive;
+		this.picture = "default.png";
+	}
+
+	
+
+	/**
+	 * @param name
+	 * @param lastName
+	 * @param password
+	 * @param picture
+	 * @param isAdmin
+	 * @param isActive
+	 */
+	public User(String name, String lastName, String password, String picture, boolean isAdmin, boolean isActive) {
+		this.name = name;
+		this.lastName = lastName;
+		this.password = password;
+		this.picture = picture;
+		this.isAdmin = isAdmin;
+		this.isActive = isActive;
+	}
+
 
 	/**
 	 * @return the id
@@ -104,19 +84,6 @@ public class User {
 		this.id = id;
 	}
 
-	/**
-	 * @return the numCni
-	 */
-	public String getNumCni() {
-		return numCni;
-	}
-
-	/**
-	 * @param numCni the numCni to set
-	 */
-	public void setNumCni(String numCni) {
-		this.numCni = numCni;
-	}
 
 	/**
 	 * @return the name
@@ -144,34 +111,6 @@ public class User {
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	/**
-	 * @return the phone
-	 */
-	public String getPhone() {
-		return phone;
-	}
-
-	/**
-	 * @param phone the phone to set
-	 */
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	/**
-	 * @return the mail
-	 */
-	public String getMail() {
-		return mail;
-	}
-
-	/**
-	 * @param mail the mail to set
-	 */
-	public void setMail(String mail) {
-		this.mail = mail;
 	}
 
 	/**
@@ -232,8 +171,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", numCni=" + numCni + ", name=" + name + ", lastName=" + lastName + ", phone="
-				+ phone + ", mail=" + mail + ", password=" + password + ", picture=" + picture + ", isAdmin=" + isAdmin
+		return "User [id=" + id + ", name=" + name + ", lastName=" + lastName + ", password=" + password + ", picture=" + picture + ", isAdmin=" + isAdmin
 				+ ", isActive=" + isActive + "]";
 	}
 
@@ -245,11 +183,8 @@ public class User {
 		result = prime * result + (isActive ? 1231 : 1237);
 		result = prime * result + (isAdmin ? 1231 : 1237);
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((mail == null) ? 0 : mail.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((numCni == null) ? 0 : numCni.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result + ((picture == null) ? 0 : picture.hashCode());
 		return result;
 	}
@@ -274,30 +209,15 @@ public class User {
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
-		if (mail == null) {
-			if (other.mail != null)
-				return false;
-		} else if (!mail.equals(other.mail))
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (numCni == null) {
-			if (other.numCni != null)
-				return false;
-		} else if (!numCni.equals(other.numCni))
-			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
-			return false;
-		if (phone == null) {
-			if (other.phone != null)
-				return false;
-		} else if (!phone.equals(other.phone))
 			return false;
 		if (picture == null) {
 			if (other.picture != null)

@@ -82,7 +82,7 @@ public class LoginFormController implements Initializable{
     	loadLang();
     	String mail = email.getText();
     	String password = this.password.getText();
-    	if(!mail.trim().isEmpty() && !password.trim().isEmpty()) {
+    	/*if(!mail.trim().isEmpty() && !password.trim().isEmpty()) {
 			User user = new User(mail,password);
 			try {
 				ResultSet rs = userDao.request("SELECT * FROM users WHERE mail='"+user.getMail()+"'");
@@ -106,7 +106,7 @@ public class LoginFormController implements Initializable{
 			}
 		}else {
             Utilitie.showNotification("Erreur", "Veuillez remplir tous les champs", AnimationType.POPUP, NotificationType.ERROR, 3000);
-		}
+		}*/
     }
 
     @FXML
