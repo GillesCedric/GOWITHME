@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
+
+import application.Main;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import utilities.Utilitie;
 
@@ -28,6 +32,14 @@ public class SettingContainerFormController implements Initializable{
 
     @FXML
     private Pane pane;
+    
+    @FXML
+    private FontAwesomeIcon lockdownButton;
+
+    @FXML
+    void close(MouseEvent event) {
+    	Main.settingContainerStage.close();
+    }
 
     @FXML
     void openCard(ActionEvent event) {
