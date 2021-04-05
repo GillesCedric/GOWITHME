@@ -1,190 +1,221 @@
 package models;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.sql.Timestamp;
 
 public class Payment {
 	private int id;
-	private String mode;
-	private boolean state;
-	private int amount;
-	private Date date;
-	private Time time;
+	private String state;
 	private String reference;
+	private int customerId;
+	private int seat;
+	private int amount;
+	private boolean isReceive;
+	private Timestamp receiveDate;
+	private boolean isRefund;
+	private Timestamp refundDate;
 	private int userId;
 	private int travelId;
-	/**
-	 * @param mode
-	 * @param state
-	 * @param amount
-	 * @param date
-	 * @param time
-	 * @param reference
-	 * @param userId
-	 * @param travelId
-	 */
-	public Payment(String mode, boolean state, int amount, Date date, Time time, String reference, int userId,
-			int travelId) {
-		this.mode = mode;
-		this.state = state;
-		this.amount = amount;
-		this.date = date;
-		this.time = time;
-		this.reference = reference;
-		this.userId = userId;
-		this.travelId = travelId;
-	}
-	/**
-	 * @param id
-	 * @param mode
-	 * @param state
-	 * @param amount
-	 * @param date
-	 * @param time
-	 * @param reference
-	 * @param userId
-	 * @param travelId
-	 */
-	public Payment(int id, String mode, boolean state, int amount, Date date, Time time, String reference, int userId,
-			int travelId) {
+	private int payementMethodId;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
+	
+	
+	public Payment(int id, String state, String reference, int customerId, int seat, int amount, boolean isReceive,
+			Timestamp receiveDate, boolean isRefund, Timestamp refundDate, int userId, int travelId,
+			int payementMethodId, Timestamp createdAt, Timestamp updatedAt) {
+		super();
 		this.id = id;
-		this.mode = mode;
 		this.state = state;
-		this.amount = amount;
-		this.date = date;
-		this.time = time;
 		this.reference = reference;
+		this.customerId = customerId;
+		this.seat = seat;
+		this.amount = amount;
+		this.isReceive = isReceive;
+		this.receiveDate = receiveDate;
+		this.isRefund = isRefund;
+		this.refundDate = refundDate;
 		this.userId = userId;
 		this.travelId = travelId;
+		this.payementMethodId = payementMethodId;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
-	/**
-	 * @return the id
-	 */
+
+
+
 	public int getId() {
 		return id;
 	}
-	/**
-	 * @param id the id to set
-	 */
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	/**
-	 * @return the mode
-	 */
-	public String getMode() {
-		return mode;
-	}
-	/**
-	 * @param mode the mode to set
-	 */
-	public void setMode(String mode) {
-		this.mode = mode;
-	}
-	/**
-	 * @return the state
-	 */
-	public boolean isState() {
+
+
+	public String getState() {
 		return state;
 	}
-	/**
-	 * @param state the state to set
-	 */
-	public void setState(boolean state) {
+
+
+	public void setState(String state) {
 		this.state = state;
 	}
-	/**
-	 * @return the amount
-	 */
-	public int getAmount() {
-		return amount;
-	}
-	/**
-	 * @param amount the amount to set
-	 */
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-	/**
-	 * @return the date
-	 */
-	public Date getDate() {
-		return date;
-	}
-	/**
-	 * @param date the date to set
-	 */
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	/**
-	 * @return the time
-	 */
-	public Time getTime() {
-		return time;
-	}
-	/**
-	 * @param time the time to set
-	 */
-	public void setTime(Time time) {
-		this.time = time;
-	}
-	/**
-	 * @return the reference
-	 */
+
+
 	public String getReference() {
 		return reference;
 	}
-	/**
-	 * @param reference the reference to set
-	 */
-	public void setReference(String reference) {
-		this.reference = reference;
+
+
+	public void setRefernce(String refernce) {
+		this.reference = refernce;
 	}
-	/**
-	 * @return the userId
-	 */
+
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+
+
+	public int getSeat() {
+		return seat;
+	}
+
+
+	public void setSeat(int seat) {
+		this.seat = seat;
+	}
+
+
+	public int getAmount() {
+		return amount;
+	}
+
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+
+	public boolean isReceive() {
+		return isReceive;
+	}
+
+
+	public void setReceive(boolean isReceive) {
+		this.isReceive = isReceive;
+	}
+
+
+	public Timestamp getReceiveDate() {
+		return receiveDate;
+	}
+
+
+	public void setReceiveDate(Timestamp receiveDate) {
+		this.receiveDate = receiveDate;
+	}
+
+
+	public boolean isRefund() {
+		return isRefund;
+	}
+
+
+	public void setRefund(boolean isRefund) {
+		this.isRefund = isRefund;
+	}
+
+
+	public Timestamp getRefundDate() {
+		return refundDate;
+	}
+
+
+	public void setRefundDate(Timestamp refundDate) {
+		this.refundDate = refundDate;
+	}
+
+
 	public int getUserId() {
 		return userId;
 	}
-	/**
-	 * @param userId the userId to set
-	 */
+
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	/**
-	 * @return the travelId
-	 */
+
+
 	public int getTravelId() {
 		return travelId;
 	}
-	/**
-	 * @param travelId the travelId to set
-	 */
+
+
 	public void setTravelId(int travelId) {
 		this.travelId = travelId;
 	}
-	@Override
-	public String toString() {
-		return "Payment [id=" + id + ", mode=" + mode + ", state=" + state + ", amount=" + amount + ", date=" + date
-				+ ", time=" + time + ", reference=" + reference + ", userId=" + userId + ", travelId=" + travelId + "]";
+
+
+	public int getPayementMethodId() {
+		return payementMethodId;
 	}
+
+
+	public void setPayementMethodId(int payementMethodId) {
+		this.payementMethodId = payementMethodId;
+	}
+
+
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+
+
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
+
+
+	public Timestamp getUpdatedAt() {
+		return updatedAt;
+	}
+
+
+	public void setUpdateAt(Timestamp updateAt) {
+		this.updatedAt = updateAt;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + amount;
-		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
+		result = prime * result + customerId;
 		result = prime * result + id;
-		result = prime * result + ((mode == null) ? 0 : mode.hashCode());
+		result = prime * result + (isReceive ? 1231 : 1237);
+		result = prime * result + (isRefund ? 1231 : 1237);
+		result = prime * result + payementMethodId;
+		result = prime * result + ((receiveDate == null) ? 0 : receiveDate.hashCode());
 		result = prime * result + ((reference == null) ? 0 : reference.hashCode());
-		result = prime * result + (state ? 1231 : 1237);
-		result = prime * result + ((time == null) ? 0 : time.hashCode());
+		result = prime * result + ((refundDate == null) ? 0 : refundDate.hashCode());
+		result = prime * result + seat;
+		result = prime * result + ((state == null) ? 0 : state.hashCode());
 		result = prime * result + travelId;
+		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
 		result = prime * result + userId;
 		return result;
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -196,35 +227,65 @@ public class Payment {
 		Payment other = (Payment) obj;
 		if (amount != other.amount)
 			return false;
-		if (date == null) {
-			if (other.date != null)
+		if (createdAt == null) {
+			if (other.createdAt != null)
 				return false;
-		} else if (!date.equals(other.date))
+		} else if (!createdAt.equals(other.createdAt))
+			return false;
+		if (customerId != other.customerId)
 			return false;
 		if (id != other.id)
 			return false;
-		if (mode == null) {
-			if (other.mode != null)
+		if (isReceive != other.isReceive)
+			return false;
+		if (isRefund != other.isRefund)
+			return false;
+		if (payementMethodId != other.payementMethodId)
+			return false;
+		if (receiveDate == null) {
+			if (other.receiveDate != null)
 				return false;
-		} else if (!mode.equals(other.mode))
+		} else if (!receiveDate.equals(other.receiveDate))
 			return false;
 		if (reference == null) {
 			if (other.reference != null)
 				return false;
 		} else if (!reference.equals(other.reference))
 			return false;
-		if (state != other.state)
-			return false;
-		if (time == null) {
-			if (other.time != null)
+		if (refundDate == null) {
+			if (other.refundDate != null)
 				return false;
-		} else if (!time.equals(other.time))
+		} else if (!refundDate.equals(other.refundDate))
+			return false;
+		if (seat != other.seat)
+			return false;
+		if (state == null) {
+			if (other.state != null)
+				return false;
+		} else if (!state.equals(other.state))
 			return false;
 		if (travelId != other.travelId)
+			return false;
+		if (updatedAt == null) {
+			if (other.updatedAt != null)
+				return false;
+		} else if (!updatedAt.equals(other.updatedAt))
 			return false;
 		if (userId != other.userId)
 			return false;
 		return true;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Payment [id=" + id + ", state=" + state + ", refernce=" + reference + ", customerId=" + customerId
+				+ ", seat=" + seat + ", amount=" + amount + ", isReceive=" + isReceive + ", receiveDate=" + receiveDate
+				+ ", isRefund=" + isRefund + ", refundDate=" + refundDate + ", userId=" + userId + ", travelId="
+				+ travelId + ", payementMethodId=" + payementMethodId + ", createdAt=" + createdAt + ", updateAt="
+				+ updatedAt + "]";
+	}
+	
+	
 	
 }

@@ -22,9 +22,6 @@ import javafx.util.Duration;
 import system.GestionFile;
 import system.Log;
 import system.Parameter;
-import tray.animations.AnimationType;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
 
 
 public class Utilitie {
@@ -192,11 +189,6 @@ public class Utilitie {
 			case "newVoyage" :
 				Main.stages.get(3).setScene(Main.scenes.get(3));
 				Main.stages.get(3).show();
-			break;
-			case "newPoint" :
-				Main.stages.get(4).setScene(Main.scenes.get(4));
-				Main.stages.get(4).show();
-				lock.close();
 			break;
 		}
 	}
