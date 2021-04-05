@@ -77,13 +77,13 @@ public class Main extends Application{
 					s.getIcons().add(new Image("/img/logo.png"));
 				}
 				
-				/*for(int i = 0; i < roots.size(); i++) {
+				for(int i = 0; i < roots.size(); i++) {
 					scenes.add(new Scene(roots.get(i)));
 					Utilitie.autoriseDeplacement(roots.get(i), stages.get(i));
 					stages.get(i).setScene(scenes.get(i));
 					stages.get(i).centerOnScreen();
 					stages.get(i).setResizable(false);
-				}*/
+				}
 
 				stages.get(1).show();
 			} catch(Exception e) {
