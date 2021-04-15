@@ -9,6 +9,9 @@ public class Mark {
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	
+	public Mark() {
+		
+	}
 	
 	public Mark(int userIdMaker, int userIdMakee, int mark, Timestamp createdAt, Timestamp updatedAt) {
 		super();

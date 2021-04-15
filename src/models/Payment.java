@@ -19,11 +19,13 @@ public class Payment {
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	
+	public Payment() {
+		
+	}
 	
 	public Payment(int id, String state, String reference, int customerId, int seat, int amount, boolean isReceive,
 			Timestamp receiveDate, boolean isRefund, Timestamp refundDate, int userId, int travelId,
 			int payementMethodId, Timestamp createdAt, Timestamp updatedAt) {
-		super();
 		this.id = id;
 		this.state = state;
 		this.reference = reference;

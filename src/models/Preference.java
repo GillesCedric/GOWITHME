@@ -2,18 +2,21 @@ package models;
 
 import java.sql.Timestamp;
 
-import utilities.Type;
+import utilities.PreferenceType;
 
 public class Preference {
 	private int id;
-	private Type type;
+	private PreferenceType type;
 	private boolean value;
 	private int userId;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	
+	public Preference() {
+		
+	}
 	
-	public Preference(int id, Type type, boolean value, int userId, Timestamp createdAt, Timestamp updatedAt) {
+	public Preference(int id, PreferenceType type, boolean value, int userId, Timestamp createdAt, Timestamp updatedAt) {
 		super();
 		this.id = id;
 		this.type = type;
@@ -34,12 +37,12 @@ public class Preference {
 	}
 
 
-	public Type getType() {
+	public PreferenceType getType() {
 		return type;
 	}
 
 
-	public void setType(Type type) {
+	public void setType(PreferenceType type) {
 		this.type = type;
 	}
 

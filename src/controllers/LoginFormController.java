@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import application.Main;
+import dao.IdentifierDao;
 import dao.UserDao;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
@@ -20,14 +21,17 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import models.Identifier;
 import models.User;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
+import utilities.IdentifierType;
 import utilities.Utilitie;
 
 public class LoginFormController implements Initializable{
 	
 	private UserDao userDao = new UserDao();
+	private IdentifierDao identifierDao = new IdentifierDao();
 	
 		@FXML
 		private AnchorPane container;
@@ -80,33 +84,37 @@ public class LoginFormController implements Initializable{
     @FXML
     void login(ActionEvent event) throws IOException {
     	loadLang();
-    	String mail = email.getText();
+    	String login = email.getText();
     	String password = this.password.getText();
-    	/*if(!mail.trim().isEmpty() && !password.trim().isEmpty()) {
-			User user = new User(mail,password);
+    	if(!login.trim().isEmpty() && !password.trim().isEmpty()) {
 			try {
-				ResultSet rs = userDao.request("SELECT * FROM users WHERE mail='"+user.getMail()+"'");
+				ResultSet rs = identifierDao.request("SELECT * FROM identifiers WHERE identifier='"+login+"'");
+				if(rs == null) return;
 				if(rs.next()) {
-					User userConnected = new User(rs.getInt("id"), rs.getString("cni"), rs.getString("name"),rs.getString("lastName"),rs.getString("phone"),rs.getString("mail"),rs.getString("password"),rs.getString("picture"),rs.getBoolean("isAdmin"),rs.getBoolean("isActive"));
-					if(Utilitie.checkPassword(password, userConnected.getPassword())) {
-						Main.userConnected = userConnected;
-						if(userConnected.isAdmin()) {
-							// @todo Open Admin Main Interface
-						}else { 
-							Utilitie.changeScreen("acceuil", Main.loginStage);
+					Identifier useridentifiers = new Identifier(rs.getInt("id"),IdentifierType.valueOf(rs.getString("type")),rs.getString("identifier"),rs.getBoolean("isVerified"),rs.getTimestamp("verifiedDate"),rs.getTimestamp("createdAt"),rs.getTimestamp("updatedAt"),rs.getInt("userId"));
+					rs = userDao.request("SELECT * FROM users WHERE id='"+useridentifiers.getUserId()+"'");
+					if(rs.next()) {
+						User userConnected = new User(rs.getInt("id"), rs.getString("name"),rs.getString("lastName"),rs.getString("password"),rs.getString("picture"),rs.getBoolean("isAdmin"),rs.getBoolean("isActive"),rs.getTimestamp("createdAt"),rs.getTimestamp("updatedAt"));
+						if(Utilitie.checkPassword(password, userConnected.getPassword())) {
+							Main.userConnected = userConnected;
+							if(userConnected.isAdmin()) {
+								// @todo Open Admin Main Interface
+							}else { 
+								Utilitie.changeScreen("acceuil", Main.loginStage);
+							}
+						}else {
+							Utilitie.showNotification("Erreur", "Veuillez vérifiez votre mot de passe", AnimationType.POPUP, NotificationType.ERROR, 3000);
 						}
-					}else {
-						Utilitie.showNotification("Erreur", "Veuillez vérifiez votre mot de passe", AnimationType.POPUP, NotificationType.ERROR, 3000);
 					}
 				}else {
-					Utilitie.showNotification("Erreur", "Veuillez vérifiez votre adresse mail", AnimationType.POPUP, NotificationType.ERROR, 3000);
+					Utilitie.showNotification("Erreur", "Veuillez vérifiez votre identifiant", AnimationType.POPUP, NotificationType.ERROR, 3000);
 				}
 			} catch (SQLException ex) {
 				Utilitie.error(LoginFormController.class.getName(), ex);
 			}
 		}else {
             Utilitie.showNotification("Erreur", "Veuillez remplir tous les champs", AnimationType.POPUP, NotificationType.ERROR, 3000);
-		}*/
+		}
     }
 
     @FXML
@@ -126,7 +134,8 @@ public class LoginFormController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		loadLang();
-		
+		email.setText("nguefackgilles@gmail.com");
+		password.setText("Cedinho10");
 	}
 
 }

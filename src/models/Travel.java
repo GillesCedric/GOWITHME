@@ -1,7 +1,6 @@
 package models;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 public class Travel {
@@ -9,7 +8,7 @@ public class Travel {
 	private String departure;
 	private String arrival;
 	private Date departureDate;
-	private Time departureTime;
+	private String departureTime;
 	private String description;
 	private int seat;
 	private int amount;
@@ -19,10 +18,12 @@ public class Travel {
 	private int userId;
 	private int carId;
 	
+	public Travel(){
+		
+	}
 	
-	public Travel(int id, String departure, String arrival, Date departureDate, Time departureTime, String description,
+	public Travel(int id, String departure, String arrival, Date departureDate, String departureTime, String description,
 			int seat, int amount, boolean isActive, Timestamp createdAt, Timestamp updatedAt, int userId, int carId) {
-		super();
 		this.id = id;
 		this.departure = departure;
 		this.arrival = arrival;
@@ -79,12 +80,12 @@ public class Travel {
 	}
 
 
-	public Time getDepartureTime() {
+	public String getDepartureTime() {
 		return departureTime;
 	}
 
 
-	public void setDepartureTime(Time departureTime) {
+	public void setDepartureTime(String departureTime) {
 		this.departureTime = departureTime;
 	}
 

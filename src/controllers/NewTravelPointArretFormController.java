@@ -1,13 +1,11 @@
 package controllers;
 
-import java.sql.Time;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import application.Main;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import tray.animations.AnimationType;
@@ -15,7 +13,7 @@ import tray.notification.NotificationType;
 import utilities.Utilitie;
 
 public class NewTravelPointArretFormController{
-	private NewTravelPointArretContainerFormController newTravelPointArretContainerFormController;
+	private NewTravelContainerFormController newTravelContainerFormController;
 
     @FXML
     private JFXTextField depart;
@@ -48,9 +46,8 @@ public class NewTravelPointArretFormController{
     void save(ActionEvent event) {
     	if(!this.depart.getText().trim().isEmpty() && !this.heureTextField.getText().trim().isEmpty()) {
     		String point = this.depart.getText();
-        	Time time = Time.valueOf(this.heureTextField.getText()+":00");
-        	//@todo save the point
-        	this.newTravelPointArretContainerFormController.savePoint(point,time);
+    		String heure = this.heureTextField.getText();
+        	this.newTravelContainerFormController.savePoint(point,heure);
         	Utilitie.changeScreen("newVoyage", null);
         	Main.newPointStage.close();
     	}else {
@@ -59,17 +56,17 @@ public class NewTravelPointArretFormController{
     	
     }
     
-    public void setData(NewTravelPointArretContainerFormController newTravelPointArretContainerFormController) {
-    	this.newTravelPointArretContainerFormController = newTravelPointArretContainerFormController;
+    public void setData(NewTravelContainerFormController newTravelContainerFormController) {
+    	this.newTravelContainerFormController = newTravelContainerFormController;
     }
     
     @FXML
     void handleKey(KeyEvent event) {
-    	if(!event.getCode().equals(KeyCode.BACK_SPACE)) {
+    	/*if(!event.getCode().equals(KeyCode.BACK_SPACE)) {
 			String text = this.heureTextField.getText();
 			if(text.length() == 2)											
 				this.heureTextField.setText(text+":");
-		}
+		}*/
     }
 
 }

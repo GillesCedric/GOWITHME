@@ -2,29 +2,52 @@ package models;
 
 import java.sql.Timestamp;
 
-import utilities.Type;
+import utilities.IdentifierType;
 
 public class Identifier {
 	private int id;
-	private Type type;
+	private IdentifierType type;
+	private String identifier;
 	private boolean isVerified;
-	private Timestamp VerifiedDate;
+	private Timestamp verifiedDate;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	private int userId;
 	
+	public Identifier() {
+		
+	}
 	
-	public Identifier(int id, Type type, boolean isVerified, Timestamp verifiedDate, Timestamp createdAt,
-			Timestamp updatedAt, int userId) {
-		super();
+	
+	public Identifier(IdentifierType type, String identifier, int userId) {
+		this.type = type;
+		this.identifier = identifier;
+		this.userId = userId;
+	}
+
+
+	/**
+	 * @param id
+	 * @param type
+	 * @param identifier
+	 * @param isVerified
+	 * @param verifiedDate
+	 * @param createdAt
+	 * @param updatedAt
+	 * @param userId
+	 */
+	public Identifier(int id, IdentifierType type, String identifier, boolean isVerified, Timestamp verifiedDate,
+			Timestamp createdAt, Timestamp updatedAt, int userId) {
 		this.id = id;
 		this.type = type;
+		this.identifier = identifier;
 		this.isVerified = isVerified;
-		VerifiedDate = verifiedDate;
+		this.verifiedDate = verifiedDate;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 		this.userId = userId;
 	}
+
 
 
 	public int getId() {
@@ -37,12 +60,12 @@ public class Identifier {
 	}
 
 
-	public Type getType() {
+	public IdentifierType getType() {
 		return type;
 	}
 
 
-	public void setType(Type type) {
+	public void setType(IdentifierType type) {
 		this.type = type;
 	}
 
@@ -57,13 +80,13 @@ public class Identifier {
 	}
 
 
-	public Timestamp getVerifiedDate() {
-		return VerifiedDate;
+	public Timestamp getverifiedDate() {
+		return verifiedDate;
 	}
 
 
-	public void setVerifiedDate(Timestamp verifiedDate) {
-		VerifiedDate = verifiedDate;
+	public void setverifiedDate(Timestamp verifiedDate) {
+		this.verifiedDate = verifiedDate;
 	}
 
 
@@ -97,19 +120,56 @@ public class Identifier {
 	}
 
 
+
+	/**
+	 * @return the identifier
+	 */
+	public String getIdentifier() {
+		return identifier;
+	}
+
+
+
+	/**
+	 * @param identifier the identifier to set
+	 */
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
+	}
+
+
+
+	/**
+	 * @return the verifiedDate
+	 */
+	public Timestamp getVerifiedDate() {
+		return verifiedDate;
+	}
+
+
+
+	/**
+	 * @param verifiedDate the verifiedDate to set
+	 */
+	public void setVerifiedDate(Timestamp verifiedDate) {
+		this.verifiedDate = verifiedDate;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((VerifiedDate == null) ? 0 : VerifiedDate.hashCode());
 		result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((identifier == null) ? 0 : identifier.hashCode());
 		result = prime * result + (isVerified ? 1231 : 1237);
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
 		result = prime * result + userId;
+		result = prime * result + ((verifiedDate == null) ? 0 : verifiedDate.hashCode());
 		return result;
 	}
+
 
 
 	@Override
@@ -121,17 +181,17 @@ public class Identifier {
 		if (getClass() != obj.getClass())
 			return false;
 		Identifier other = (Identifier) obj;
-		if (VerifiedDate == null) {
-			if (other.VerifiedDate != null)
-				return false;
-		} else if (!VerifiedDate.equals(other.VerifiedDate))
-			return false;
 		if (createdAt == null) {
 			if (other.createdAt != null)
 				return false;
 		} else if (!createdAt.equals(other.createdAt))
 			return false;
 		if (id != other.id)
+			return false;
+		if (identifier == null) {
+			if (other.identifier != null)
+				return false;
+		} else if (!identifier.equals(other.identifier))
 			return false;
 		if (isVerified != other.isVerified)
 			return false;
@@ -144,16 +204,19 @@ public class Identifier {
 			return false;
 		if (userId != other.userId)
 			return false;
+		if (verifiedDate == null) {
+			if (other.verifiedDate != null)
+				return false;
+		} else if (!verifiedDate.equals(other.verifiedDate))
+			return false;
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Identifier [id=" + id + ", type=" + type + ", isVerified=" + isVerified + ", VerifiedDate="
-				+ VerifiedDate + ", createdAt=" + createdAt + ", updateAt=" + updatedAt + ", userId=" + userId + "]";
+		return "Identifier [id=" + id + ", type=" + type + ", identifier=" + identifier + ", isVerified=" + isVerified
+				+ ", verifiedDate=" + verifiedDate + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ ", userId=" + userId + "]";
 	}
 	
-	
-
 }

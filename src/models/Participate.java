@@ -7,6 +7,11 @@ public class Participate {
 	private String comments;
 	private int userId;
 	private int travelId;
+	
+	public Participate() {
+		
+	}
+	
 	/**
 	 * @param seats
 	 * @param mark

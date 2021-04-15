@@ -220,6 +220,7 @@
 }
 .inputSearch{
 	-jfx-unfocus-color: white;
+	-jfx-focus-color: white;
 	-fx-text-fill: white;
 	
 }
@@ -261,4 +262,9 @@
 .reservationBtn{
 	-fx-background-color: #4059a9;
 	-fx-background-radius: 45px;
+}
+.inputArea{
+	-fx-background-color: #05071F;
+	-fx-text-fill: #05071F;
+	-fx-border-color: white;
 }

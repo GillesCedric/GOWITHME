@@ -39,15 +39,16 @@ public abstract class Dao {
   }
 
    
-    protected void connectionDatabase() {
+    protected int connectionDatabase() {
 
      try {  
        Log.addLog(new Log(Dao.class.getName(),"Connexion à la base de données"));
        this.connection = DriverManager.getConnection(""+this.url,this.username, this.password);
+       return 0;
      } catch (SQLException ex) {
     	 Utilitie.error(Dao.class.getName(), ex);
      }
-
+     return 1;
    }
     
     protected void closeConnection(){
@@ -92,6 +93,8 @@ public abstract class Dao {
      */
     public abstract void insert(ArrayList<?> list);
     
+    public abstract int insert(Object object);
+    
     /**
      *
      * @return
@@ -103,7 +106,7 @@ public abstract class Dao {
     public abstract void delete(Object object);
     
     public ResultSet request(String sql) {
-    	this.connectionDatabase();
+    	if(this.connectionDatabase() != 0) return null;
     	 try {
              PreparedStatement prepareStatement = connection.prepareStatement(sql);
              ResultSet rs = prepareStatement.executeQuery();

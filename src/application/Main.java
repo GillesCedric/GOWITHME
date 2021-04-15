@@ -34,6 +34,7 @@ public class Main extends Application{
 	public static Stage settingContainerStage = new Stage();
 	public static Stage newVoyageStage = new Stage();
 	public static Stage newPointStage = new Stage();
+	public static Stage newCarStage = new Stage();
 
 		@Override
 		public void start(Stage primaryStage) {
@@ -53,24 +54,28 @@ public class Main extends Application{
 				FXMLLoader setting = new FXMLLoader(getClass().getResource("/views/SettingContainerForm.fxml"));
 				FXMLLoader travelContainer = new FXMLLoader(getClass().getResource("/views/NewTravelContainerForm.fxml"));
 				FXMLLoader travelPoint = new FXMLLoader(getClass().getResource("/views/NewTravelPointArretForm.fxml"));
+				FXMLLoader addCar = new FXMLLoader(getClass().getResource("/views/NewCarContainerForm.fxml"));
 				
 				roots.add(login.load());
 				roots.add(acceuil.load());
 				roots.add(setting.load());
 				roots.add(travelContainer.load());
 				roots.add(travelPoint.load());
+				roots.add(addCar.load());
 				
 				controllers.add(login.getController());
 				controllers.add(acceuil.getController());
 				controllers.add(setting.getController());
 				controllers.add(travelContainer.getController());
 				controllers.add(travelPoint.getController());
+				controllers.add(addCar.getController());
 
 				stages.add(loginStage);
 				stages.add(acceuilStage);
 				stages.add(settingContainerStage);
 				stages.add(newVoyageStage);
 				stages.add(newPointStage);
+				stages.add(newCarStage);
 				
 				for(Stage s : stages) {
 					s.initStyle(StageStyle.UNDECORATED);
@@ -85,7 +90,7 @@ public class Main extends Application{
 					stages.get(i).setResizable(false);
 				}
 
-				stages.get(1).show();
+				stages.get(0).show();
 			} catch(Exception e) {
 				Utilitie.error(Main.class.getName(), e);
 			}

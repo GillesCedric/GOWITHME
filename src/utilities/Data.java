@@ -17,7 +17,7 @@ public class Data {
     public static final String APPNAME = "GOWITHME";
     public static final String LOG = SYSTEMNAME+".log";
     public static final String PARAMETER = "parameter.data";
-    public static final String DBNAME = "covoiturageapp";
+    public static final String DBNAME = "gowithme";
     public static final String USERNAME = "root";
     public static final String PASSWORD = "";
     public static final String PORT = "3308";

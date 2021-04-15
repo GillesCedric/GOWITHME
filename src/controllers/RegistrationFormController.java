@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
 import application.Main;
+import dao.IdentifierDao;
 import dao.UserDao;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
@@ -16,9 +17,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import models.Identifier;
 import models.User;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
+import utilities.IdentifierType;
 import utilities.Utilitie;
 
 public class RegistrationFormController {
@@ -97,16 +100,22 @@ public class RegistrationFormController {
     				if(cni.length() == 17 || cni.length() == 9) {
     					if(Utilitie.match(email, Utilitie.EMAIL_REGEX)) {
     						if(Utilitie.match(password, Utilitie.PASSWORD_REGEX)) {
-    							/*if(Utilitie.match(tel, Utilitie.TEL_REGEX)) {
-    								User user = new User(cni, name, lastName, tel, email, password, false, false);
-    								ArrayList<User> users = new ArrayList<User>();
-    								users.add(user);
-    								userDao.insert(users);
-    								backToLogin();
-    								Utilitie.showNotification("Inscription effectué", "Votre inscription a été effectué avec succès", AnimationType.POPUP, NotificationType.SUCCESS, 3000);
+    							if(Utilitie.match(tel, Utilitie.TEL_REGEX)) {
+    								User user = new User(name, lastName, password, false, false);
+    								int id = userDao.insert(user);
+    								if(id != 0) {
+    									ArrayList<Identifier> identifiers = new ArrayList<>();
+    									identifiers.add(new Identifier(IdentifierType.cni, cni, id));
+    									identifiers.add(new Identifier(IdentifierType.email, email, id));
+    									identifiers.add(new Identifier(IdentifierType.phone, tel, id));
+    									new IdentifierDao().insert(identifiers);
+    									backToLogin();
+        								Utilitie.showNotification("Inscription effectué", "Votre inscription a été effectué avec succès", AnimationType.POPUP, NotificationType.SUCCESS, 3000);
+    								}else
+    									Utilitie.showNotification("Erreur", "Impossible d'enregistrer votre compte", AnimationType.POPUP, NotificationType.ERROR, 3000);
     							}else {
     	    	        			Utilitie.showNotification("Erreur", "Votre numéro de téléphone n'est pas au format approprié.\nVeuillez ajouter l'indicatif national", AnimationType.POPUP, NotificationType.ERROR, 3000);
-    	    	        		}*/
+    	    	        		}
         	    			}else {
         	        			Utilitie.showNotification("Erreur", "Votre mot de passe doit être entre 8 et 12 caractères\net contenir aumoins 1 chiffre", AnimationType.POPUP, NotificationType.ERROR, 3000);
         	        		}

@@ -12,6 +12,9 @@ public class Request {
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	
+	public Request() {
+		
+	}
 	
 	public Request(String object, String message, File logFile, int userId, Timestamp createdAt, Timestamp updatedAt) {
 		super();

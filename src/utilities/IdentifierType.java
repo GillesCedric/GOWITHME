@@ -1,10 +1,6 @@
 package utilities;
 
-public enum Type {
-	smoke,
-	animal,
-	music,
-	talk,
+public enum IdentifierType {
 	email,
 	cni,
 	phone,
