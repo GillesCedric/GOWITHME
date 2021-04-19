@@ -1,6 +1,6 @@
 package utilities;
 
-public enum Keyword{
+public enum Scheme{
 	lang,
 	theme,
 }

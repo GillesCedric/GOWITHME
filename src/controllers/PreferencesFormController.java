@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXButton;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import utilities.Utilitie;
 
 public class PreferencesFormController {
 
@@ -53,7 +54,7 @@ public class PreferencesFormController {
 
     @FXML
     void quit(ActionEvent event) {
-    	System.exit(0);
+    	Utilitie.closeApplication();
     }
 
 }

@@ -9,9 +9,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.User;
+import system.Client;
 import system.GestionFile;
+import system.HandleServer;
 import system.Parameter;
-import utilities.Keyword;
+import utilities.Scheme;
 import utilities.Theme;
 import utilities.Utilitie;
 import javafx.scene.Parent;
@@ -20,6 +22,7 @@ import javafx.scene.image.Image;
 
 
 public class Main extends Application{
+	public static HandleServer handleServer = null;
 	public static Stage stage = null;
 	public static User userConnected = null;
 	public static ArrayList<Parameter> parameters = null; 
@@ -39,9 +42,11 @@ public class Main extends Application{
 		@Override
 		public void start(Stage primaryStage) {
 			new GestionFile().run();
+			handleServer = new Client("127.0.0.1",3000).launch();
+			if(handleServer == null) System.exit(1);
 			parameters = Utilitie.readParameters();
-			resourceBundle = ResourceBundle.getBundle("properties.lang", new Locale(Utilitie.getParameter(Keyword.lang).getValue().name()));	
-			if(Utilitie.getParameter(Keyword.theme).getValue().equals(Theme.dark)) {
+			resourceBundle = ResourceBundle.getBundle("properties.lang", new Locale(Utilitie.getParameter(Scheme.lang).getValue().name()));	
+			if(Utilitie.getParameter(Scheme.theme).getValue().equals(Theme.dark)) {
 				css = "/css/styleDark.css";
 			}else {
 				css = "/css/styleMain.css";

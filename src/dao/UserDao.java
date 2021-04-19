@@ -99,10 +99,10 @@ public class UserDao extends Dao {
 		this.connectionDatabase();
 		User user = (User) object;
 		String sql = "UPDATE users SET name=\"" + user.getLastName() + "\",LastName=\"" + user.getLastName()
-				+ "\",password=\"" + user.getPassword() + "\",picture=\"" + user.getPicture() + "\",isAdmin=\""
-				+ user.isAdmin() + "\",isActive=\"" + user.isActive() + "\",createdAt=\"" + user.getCreatedAt()
-				+ "\",updateAt=\"" + user.getUpdatedAt() + "\" WHERE id=" + user.getId();
+				+ "\",password=\"" + user.getPassword() + "\",picture=\"" + user.getPicture() + "\",isAdmin="
+				+ user.isAdmin() + ",isActive=" + user.isActive() + " WHERE id=" + user.getId();
 		try {
+			System.out.println( sql);
 			PreparedStatement prepareStatement = connection.prepareStatement(sql);
 			prepareStatement.execute();
 		} catch (SQLException ex) {

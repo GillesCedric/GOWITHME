@@ -23,6 +23,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import system.GestionFile;
+import system.Handler;
 import system.Log;
 import system.Parameter;
 import tray.animations.AnimationType;
@@ -149,7 +150,7 @@ public class Utilitie {
         tray.showAndDismiss(Duration.millis(duration));
 	}
 	
-	public static Parameter getParameter(Keyword name) {
+	public static Parameter getParameter(Scheme name) {
 		for (Parameter parameter : Main.parameters) {
 			if(parameter.getName().equals(name)) return parameter;
 		}
@@ -264,6 +265,20 @@ public class Utilitie {
 		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
 		double d = 6367 * c; 
 		return d;
+	}
+	
+	public static void closeApplication() {
+		Main.handleServer.write(new Handler<>(Keywords.close, null));
+		Main.handleServer.close();
+		System.exit(0);
+	}
+	
+	public static void sleep(int duration) {
+		try {
+			Thread.sleep(duration);
+		} catch (InterruptedException e) {
+			error(Utilitie.class.getName(),e);
+		}
 	}
 
 }

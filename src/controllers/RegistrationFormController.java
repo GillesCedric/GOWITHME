@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -15,27 +17,27 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import models.Identifier;
 import models.User;
+import system.Handler;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
+import utilities.FilePicker;
 import utilities.IdentifierType;
+import utilities.Keywords;
+import utilities.MD5;
 import utilities.Utilitie;
 
 public class RegistrationFormController {
 	private UserDao userDao = new UserDao();
 	private boolean visible = false;
+	private File image = null;
 
-    @FXML
+	@FXML
     private AnchorPane pane;
-
-    @FXML
-    private JFXTextField cni;
-
-    @FXML
-    private JFXPasswordField password;
 
     @FXML
     private JFXButton registrationBtn;
@@ -44,25 +46,40 @@ public class RegistrationFormController {
     private FontAwesomeIcon closeBtn;
 
     @FXML
-    private JFXTextField email;
-
-    @FXML
-    private JFXTextField lastName;
+    private FontAwesomeIcon backBtn;
 
     @FXML
     private JFXTextField name;
 
     @FXML
+    private JFXTextField lastName;
+
+    @FXML
+    private JFXTextField cni;
+
+    @FXML
+    private JFXTextField email;
+
+    @FXML
+    private JFXPasswordField password;
+
+    @FXML
     private JFXTextField tel;
 
     @FXML
-    private FontAwesomeIcon backBtn;
-    
-    @FXML
     private JFXTextField passwordVisible;
-    
+
     @FXML
     private FontAwesomeIcon makePasswordVisibleBtn;
+
+    @FXML
+    private Label fileName;
+
+    @FXML
+    private JFXButton fileChooser;
+
+    @FXML
+    private FontAwesomeIcon makePasswordInvisibleBtn;
 
     @FXML
     void backToLoginForm(MouseEvent event) throws IOException {
@@ -79,10 +96,22 @@ public class RegistrationFormController {
 			Utilitie.error(RegistrationFormController.class.getName(), ex);
 		}
     }
+    
+    @FXML
+    void choose(ActionEvent event) {
+    	FilePicker filePicker = new FilePicker("Sélectionnez une image", "jpg","jpeg","png");
+    	image = filePicker.chooseFile();
+    	if(image != null)
+    		this.fileName.setText(image.getName());
+    	else {
+    		this.fileName.setText("Importer une photo de profil");
+    		Utilitie.showNotification("Erreur", "Aucune image n'a été sélectionée", AnimationType.POPUP, NotificationType.ERROR, 3000);
+    	}
+    }
 
     @FXML
     void closeApp(MouseEvent event) {
-    	System.exit(0);
+    	Utilitie.closeApplication();
     }
 
     @FXML
@@ -104,6 +133,20 @@ public class RegistrationFormController {
     								User user = new User(name, lastName, password, false, false);
     								int id = userDao.insert(user);
     								if(id != 0) {
+    									System.out.println( "test "+image.getName().substring(image.getName().indexOf(".")));
+    									user.setId(id);
+    									user.setPicture(MD5.encrypt(String.valueOf(id))+image.getName().substring(image.getName().lastIndexOf(".")));
+    									userDao.update(user);
+    									System.out.println( "user "+user.getPicture());
+    									FileInputStream in;
+										try {
+											in = new FileInputStream(image);
+											byte b[] = new byte[in.available()];
+	    					                in.read(b);
+	    					                Main.handleServer.write(new Handler<byte[]>(Keywords.addImageUser, b,user.getPicture()));
+										} catch (IOException e) {
+											Utilitie.error(RegistrationFormController.class.getName(), e);
+										}
     									ArrayList<Identifier> identifiers = new ArrayList<>();
     									identifiers.add(new Identifier(IdentifierType.cni, cni, id));
     									identifiers.add(new Identifier(IdentifierType.email, email, id));
@@ -142,10 +185,14 @@ public class RegistrationFormController {
     		passwordVisible.setText(password.getText());
         	passwordVisible.setVisible(true);
         	password.setVisible(false);
+        	makePasswordVisibleBtn.setVisible(false);
+        	makePasswordInvisibleBtn.setVisible(true);
     	}else {
     		password.setText(passwordVisible.getText());
     		password.setVisible(true);
         	passwordVisible.setVisible(false);
+        	makePasswordVisibleBtn.setVisible(true);
+        	makePasswordInvisibleBtn.setVisible(false);
     	}
     	this.visible = !this.visible;
     	

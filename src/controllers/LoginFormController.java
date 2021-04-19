@@ -71,7 +71,7 @@ public class LoginFormController implements Initializable{
 
     @FXML
     void closeApp(MouseEvent event) {
-    	System.exit(0);
+    	Utilitie.closeApplication();
     }
     
     private void loadLang() {
