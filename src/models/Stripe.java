@@ -11,7 +11,9 @@ public class Stripe {
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	
-	
+	public Stripe() {
+		
+	}
 	public Stripe(int id, int number, int expirationMonth, int expirationYear, int cvv, Timestamp createdAt,
 			Timestamp updatedAt) {
 		super();

@@ -16,6 +16,14 @@ public class Car {
 	private int userId;
 	
 	
+	
+	/**
+	 * 
+	 */
+	public Car() {
+	}
+
+
 	public Car(int id, String brand, String model, String color, String registration, String description,
 			String picture, boolean isActive, Timestamp createdAt, Timestamp updatedAt, int userId) {
 		super();
@@ -223,15 +231,9 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", brand=" + brand + ", model=" + model + ", color=" + color + ", registration="
-				+ registration + ", description=" + description + ", picture=" + picture + ", isActive=" + isActive
-				+ ", createdAt=" + createdAt + ", updateAt=" + updatedAt + ", userId=" + userId + "]";
+		return brand +" "+ model +" "+ color;
 	}
-	
-	
-	
-	
-	
+
 	
 
 }

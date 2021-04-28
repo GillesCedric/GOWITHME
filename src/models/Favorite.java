@@ -8,6 +8,9 @@ public class Favorite {
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	
+	public Favorite() {
+		
+	}
 	
 	public Favorite(int userIdFavoriter, int userIdFavoritee, Timestamp createdAt, Timestamp updatedAt) {
 		super();

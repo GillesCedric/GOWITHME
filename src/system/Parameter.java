@@ -2,30 +2,30 @@ package system;
 
 import java.io.Serializable;
 
-import utilities.Keyword;
+import utilities.Scheme;
 
 public class Parameter implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private Keyword name;
+	private Scheme name;
 	private Enum<?> value;
 	/**
 	 * @param name
 	 * @param value
 	 */
-	public Parameter(Keyword name, Enum<?> value) {
+	public Parameter(Scheme name, Enum<?> value) {
 		this.name = name;
 		this.value = value;
 	}
 	/**
 	 * @return the name
 	 */
-	public Keyword getName() {
+	public Scheme getName() {
 		return name;
 	}
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(Keyword name) {
+	public void setName(Scheme name) {
 		this.name = name;
 	}
 	/**

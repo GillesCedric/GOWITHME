@@ -9,6 +9,9 @@ public class Message {
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	
+	public Message() {
+		
+	}
 	
 	public Message(int userIdMessager, int userIdMessagee, String message, Timestamp createdAt, Timestamp updatedAt) {
 		super();

@@ -8,10 +8,13 @@ import java.lang.management.OperatingSystemMXBean;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import application.Main;
+import controllers.NewTravelContainerFormController;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -20,13 +23,18 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import system.GestionFile;
+import system.Handler;
 import system.Log;
 import system.Parameter;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 
 public class Utilitie {
 	private static double x,y;
 	private static final int DURATION = 1;
+	private static final double DURATION2 = 0.5;
 	public static final String EMAIL_REGEX = "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
 	public static final String PASSWORD_REGEX = "^(?=.*\\d).{8,16}$";
 	public static final String TEL_REGEX = "^\\+[0-9]+(6|2)[0-9]+";
@@ -51,6 +59,12 @@ public class Utilitie {
 		timeline.getKeyFrames().add(keyframe);
 		
 		timeline.play();
+	}
+	
+	public static void translateAnimation(Node node,boolean left,double width) {
+		TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(DURATION2),node);
+		translateTransition.setByX(width);
+		translateTransition.play();
 	}
 
 	public static void makeTransitionRandom(Parent p, Pane pane) {
@@ -136,7 +150,7 @@ public class Utilitie {
         tray.showAndDismiss(Duration.millis(duration));
 	}
 	
-	public static Parameter getParameter(Keyword name) {
+	public static Parameter getParameter(Scheme name) {
 		for (Parameter parameter : Main.parameters) {
 			if(parameter.getName().equals(name)) return parameter;
 		}
@@ -190,6 +204,16 @@ public class Utilitie {
 				Main.stages.get(3).setScene(Main.scenes.get(3));
 				Main.stages.get(3).show();
 			break;
+			case "newPoint" :
+				Main.stages.get(4).setScene(Main.scenes.get(4));
+				Main.stages.get(4).show();
+				lock.close();
+			break;
+			case "newCar" :
+				Main.stages.get(5).setScene(Main.scenes.get(5));
+				Main.stages.get(5).show();
+				lock.close();
+			break;
 		}
 	}
 	
@@ -241,6 +265,20 @@ public class Utilitie {
 		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
 		double d = 6367 * c; 
 		return d;
+	}
+	
+	public static void closeApplication() {
+		Main.handleServer.write(new Handler<>(Keywords.close, null));
+		Main.handleServer.close();
+		System.exit(0);
+	}
+	
+	public static void sleep(int duration) {
+		try {
+			Thread.sleep(duration);
+		} catch (InterruptedException e) {
+			error(Utilitie.class.getName(),e);
+		}
 	}
 
 }

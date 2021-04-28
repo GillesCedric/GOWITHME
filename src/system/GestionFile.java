@@ -7,7 +7,7 @@ import java.util.Scanner;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import utilities.Data;
-import utilities.Keyword;
+import utilities.Scheme;
 import utilities.Lang;
 import utilities.Theme;
 
@@ -180,8 +180,8 @@ public class GestionFile {
 
     private void insertParameters() {
     	 ArrayList<Parameter> parameters = new ArrayList<Parameter>();
-    	 parameters.add(new Parameter(Keyword.lang,Lang.fr));
-    	 parameters.add(new Parameter(Keyword.theme,Theme.dark));
+    	 parameters.add(new Parameter(Scheme.lang,Lang.fr));
+    	 parameters.add(new Parameter(Scheme.theme,Theme.dark));
     	 writeBinary(parameters,true);
 	}
 

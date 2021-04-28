@@ -7,7 +7,7 @@ import utilities.Utilitie;
 public class User {
 	private int id;
 	private String name;
-	private String LastName;
+	private String lastName;
 	private String password;
 	private String picture;
 	private boolean isAdmin;
@@ -16,18 +16,25 @@ public class User {
 	private Timestamp updatedAt;
 	
 	
-	public User(String password) {
+	public User() {
+
+	}
+	
+	public User(String name, String lastName, String password, boolean isAdmin,
+			boolean isActive) {
+		this.name = name;
+		this.lastName = lastName;
 		this.password = Utilitie.encyptPassword(password);
-		this.picture = "";
+		this.isAdmin = isAdmin;
+		this.isActive = isActive;
 	}
 
 
 	public User(int id, String name, String lastName, String password, String picture, boolean isAdmin,
 			boolean isActive, Timestamp createdAt, Timestamp updatedAt) {
-		super();
 		this.id = id;
 		this.name = name;
-		LastName = lastName;
+		this.lastName = lastName;
 		this.password = password;
 		this.picture = picture;
 		this.isAdmin = isAdmin;
@@ -58,12 +65,12 @@ public class User {
 
 
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 
 
@@ -131,7 +138,7 @@ public class User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((LastName == null) ? 0 : LastName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
 		result = prime * result + id;
 		result = prime * result + (isActive ? 1231 : 1237);
@@ -153,10 +160,10 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (LastName == null) {
-			if (other.LastName != null)
+		if (lastName == null) {
+			if (other.lastName != null)
 				return false;
-		} else if (!LastName.equals(other.LastName))
+		} else if (!lastName.equals(other.lastName))
 			return false;
 		if (createdAt == null) {
 			if (other.createdAt != null)
@@ -195,7 +202,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", LastName=" + LastName + ", password=" + password + ", picture="
+		return "User [id=" + id + ", name=" + name + ", LastName=" + lastName + ", password=" + password + ", picture="
 				+ picture + ", isAdmin=" + isAdmin + ", isActive=" + isActive + ", createdAt=" + createdAt
 				+ ", updatedAt=" + updatedAt + "]";
 	}

@@ -10,8 +10,11 @@ public class Paypal {
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	
+	public Paypal(){
+		
+	}
 	
-	public Paypal(int id, String username, String password, int userId, Timestamp createdAt, Timestamp updateddAt) {
+	public Paypal(int id, String username, String password, int userId, Timestamp createdAt, Timestamp updatedAt) {
 		super();
 		this.id = id;
 		this.username = username;

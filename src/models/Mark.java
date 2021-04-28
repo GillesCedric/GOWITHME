@@ -5,12 +5,15 @@ import java.sql.Timestamp;
 public class Mark {
 	private int userIdMaker;
 	private int userIdMakee;
-	private int mark;
+	private double mark;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 	
+	public Mark() {
+		
+	}
 	
-	public Mark(int userIdMaker, int userIdMakee, int mark, Timestamp createdAt, Timestamp updatedAt) {
+	public Mark(int userIdMaker, int userIdMakee, double mark, Timestamp createdAt, Timestamp updatedAt) {
 		super();
 		this.userIdMaker = userIdMaker;
 		this.userIdMakee = userIdMakee;
@@ -40,12 +43,12 @@ public class Mark {
 	}
 
 
-	public int getMark() {
+	public double getMark() {
 		return mark;
 	}
 
 
-	public void setMark(int mark) {
+	public void setMark(double mark) {
 		this.mark = mark;
 	}
 
@@ -74,13 +77,14 @@ public class Mark {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
-		result = prime * result + mark;
+		long temp;
+		temp = Double.doubleToLongBits(mark);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
 		result = prime * result + userIdMakee;
 		result = prime * result + userIdMaker;
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -96,7 +100,7 @@ public class Mark {
 				return false;
 		} else if (!createdAt.equals(other.createdAt))
 			return false;
-		if (mark != other.mark)
+		if (Double.doubleToLongBits(mark) != Double.doubleToLongBits(other.mark))
 			return false;
 		if (updatedAt == null) {
 			if (other.updatedAt != null)
