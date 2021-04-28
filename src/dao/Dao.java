@@ -33,8 +33,8 @@ public abstract class Dao {
 	this.dbName = Data.DBNAME;
         this.username = Data.USERNAME;
         this.password = Data.PASSWORD;
-        this.port = Data.PORT;
-        this.host = Data.HOST;
+        this.port = Data.DBPORT;
+        this.host = Data.DBHOST;
         this.url = "jdbc:mysql://" + this.host+ ":"+this.port+"/"+this.dbName+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&characterEncoding=utf8";
   }
 

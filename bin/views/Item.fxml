@@ -33,6 +33,11 @@
       <Label fx:id="place" layoutX="666.0" layoutY="31.0" text="3" textFill="#b7c3d7" />
       <Label fx:id="montant" alignment="CENTER" layoutX="698.0" layoutY="31.0" prefHeight="17.0" prefWidth="95.0" text="3500 Fcfa" textFill="#b7c3d7" />
       <Label fx:id="id" layoutX="392.0" layoutY="59.0" text="Label" visible="false" />
+      <ImageView fx:id="loader" fitHeight="76.0" fitWidth="150.0" layoutX="368.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../img/circle-loader.gif" />
+         </image>
+      </ImageView>
    </children>
    <cursor>
       <Cursor fx:constant="HAND" />

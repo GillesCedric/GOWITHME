@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import models.Identifier;
@@ -80,6 +81,9 @@ public class RegistrationFormController {
 
     @FXML
     private FontAwesomeIcon makePasswordInvisibleBtn;
+    
+    @FXML
+    private ImageView loader;
 
     @FXML
     void backToLoginForm(MouseEvent event) throws IOException {
@@ -99,7 +103,7 @@ public class RegistrationFormController {
     
     @FXML
     void choose(ActionEvent event) {
-    	FilePicker filePicker = new FilePicker("Sélectionnez une image", "jpg","jpeg","png");
+    	FilePicker filePicker = new FilePicker("Sélectionnez une image", "jpg","jpeg","png","gif");
     	image = filePicker.chooseFile();
     	if(image != null)
     		this.fileName.setText(image.getName());
@@ -133,17 +137,16 @@ public class RegistrationFormController {
     								User user = new User(name, lastName, password, false, false);
     								int id = userDao.insert(user);
     								if(id != 0) {
-    									System.out.println( "test "+image.getName().substring(image.getName().indexOf(".")));
     									user.setId(id);
     									user.setPicture(MD5.encrypt(String.valueOf(id))+image.getName().substring(image.getName().lastIndexOf(".")));
     									userDao.update(user);
-    									System.out.println( "user "+user.getPicture());
     									FileInputStream in;
 										try {
 											in = new FileInputStream(image);
 											byte b[] = new byte[in.available()];
 	    					                in.read(b);
 	    					                Main.handleServer.write(new Handler<byte[]>(Keywords.addImageUser, b,user.getPicture()));
+	    					                in.close();
 										} catch (IOException e) {
 											Utilitie.error(RegistrationFormController.class.getName(), e);
 										}

@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -103,6 +104,44 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </JFXTextField>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="pane5" layoutY="61.0" prefHeight="250.0" prefWidth="600.0" styleClass="menu">
+         <children>
+            <Label layoutX="78.0" layoutY="34.0" text="Importer une image de votre véhicule" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Pane layoutX="50.0" layoutY="119.0" prefHeight="50.0" prefWidth="500.0" styleClass="textFieldBlock">
+               <children>
+                  <Pane layoutX="41.0" onMouseClicked="#importImage" prefHeight="50.0" prefWidth="45.0" styleClass="searchBtn2">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Pane>
+                  <JFXButton fx:id="importButton" ellipsisString="" layoutX="-1.0" onAction="#importImage" prefHeight="50.0" prefWidth="69.0" styleClass="searchBtn" text=" ">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <FontAwesomeIcon glyphName="IMAGE" size="2.5em" styleClass="iconsearch" translateX="12.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </FontAwesomeIcon>
+                     </graphic>
+                  </JFXButton>
+                  <Label fx:id="imageName" layoutX="96.0" layoutY="15.0" prefHeight="20.0" prefWidth="380.0" text="Aucune image sélectionnée" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

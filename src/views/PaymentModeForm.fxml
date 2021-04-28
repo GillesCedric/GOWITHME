@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="menu" stylesheets="@../css/StyleDark.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaymentModeFormController">
+   <children>
+      <Label layoutX="73.0" layoutY="59.0" text="Veuillez choisir votre mode de paiement" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <FontAwesomeIcon fx:id="stripe" fill="WHITE" glyphName="CC_STRIPE" layoutX="85.0" layoutY="268.0" onMouseClicked="#openStripe" size="10em">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIcon>
+      <FontAwesomeIcon fx:id="paypal" fill="WHITE" glyphName="CC_PAYPAL" layoutX="360.0" layoutY="268.0" onMouseClicked="#openPaypal" size="10em">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIcon>
+      <FontAwesomeIcon fx:id="lockdownButton" glyphName="TIMES" layoutX="578.0" layoutY="20.0" onMouseClicked="#close" size="1.5em" styleClass="closeBtn" wrappingWidth="16.714285850524902" />
+   </children>
+</AnchorPane>

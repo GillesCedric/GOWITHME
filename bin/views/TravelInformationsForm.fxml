@@ -21,7 +21,7 @@
          <font>
             <Font name="System Bold" size="36.0" />
          </font></Label>
-      <Line endX="354.0" layoutX="397.0" layoutY="78.0" startX="-354.0" stroke="#979191" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line endX="354.0" layoutX="397.0" layoutY="72.0" startX="-354.0" stroke="#979191" strokeLineCap="ROUND" strokeWidth="10.0" />
       <Line endX="354.0" layoutX="393.0" layoutY="307.0" startX="-354.0" stroke="#979191" strokeLineCap="ROUND" strokeWidth="10.0" />
       <Line endX="354.0" layoutX="395.0" layoutY="362.0" startX="-354.0" stroke="#979191" strokeLineCap="ROUND" strokeWidth="10.0" />
       <Line endX="354.0" layoutX="394.0" layoutY="461.0" startX="-354.0" stroke="#979191" strokeLineCap="ROUND" strokeWidth="10.0" />
@@ -78,6 +78,9 @@
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Line endX="354.0" layoutX="395.0" layoutY="539.0" startX="-354.0" stroke="#979191" strokeLineCap="ROUND" strokeWidth="10.0" />
       <ImageView fx:id="imageCar" fitHeight="60.0" fitWidth="60.0" layoutX="636.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true">

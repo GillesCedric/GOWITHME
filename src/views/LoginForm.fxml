@@ -38,6 +38,14 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Label>
+            <ImageView fitHeight="130.0" fitWidth="150.0" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@../img/3ef0e69f3c889c1307330c36a501eb12.gif" />
+               </image>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
          </children>
       </VBox>
       <Pane fx:id="contentArea" layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="parent">
@@ -99,6 +107,11 @@
             <FontAwesomeIcon fx:id="closeBtn" glyphName="CLOSE" layoutX="371.0" layoutY="29.0" onMouseClicked="#closeApp" size="1.5em" stroke="WHITE" styleClass="closeBtn" />
             <FontAwesomeIcon fill="#6747cd" glyphName="ENVELOPE" layoutX="29.0" layoutY="298.0" size="2.5em" />
             <FontAwesomeIcon fill="#6747cd" glyphName="LOCK" layoutX="34.0" layoutY="366.0" size="2.5em" />
+            <ImageView fx:id="loader" fitHeight="60.0" fitWidth="151.0" layoutX="170.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../img/throbber.gif" />
+               </image>
+            </ImageView>
          </children></Pane>
    </children>
 </AnchorPane>

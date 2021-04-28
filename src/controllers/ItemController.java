@@ -49,25 +49,34 @@ public class ItemController {
 
     @FXML
     private Label id;
+    
+    @FXML
+    private ImageView loader;
 
     @FXML
     void moreInfo(MouseEvent event) {
-    	
+    	Utilitie.changeScreen("travelInformations", Main.acceuilStage);
+    	TravelInformationsFormController travelInformationsFormController = (TravelInformationsFormController) Main.controllers.get(6);
+    	travelInformationsFormController.setData(Integer.parseInt(id.getText()));
     }
     
-    public void setData(ResultSet resultSet) throws SQLException {
-    	this.nom.setText(resultSet.getString("name"));
-    	this.depart.setText(resultSet.getString("departure").split(" ")[0]);
-    	this.heureDepart.setText(resultSet.getString("departureTime"));
-    	this.depart.setText(resultSet.getString("arrival").split(" ")[0]);
-    	this.place.setText(resultSet.getString("seat"));
-    	this.montant.setText(resultSet.getString("amount"));
-    	this.id.setText(resultSet.getString("id"));
-    	this.heureArrivee.setText(resultSet.getString("departureDate"));
-    	this.note.setText(String.valueOf(Math.round(resultSet.getDouble("mark") * 100.0) / 100.0));
-    	Main.handleServer.write(new Handler<>(Keywords.getImageUser, null,resultSet.getString("picture")));
-    	Utilitie.sleep(3000);
-    	this.image.setImage(new Image(new ByteArrayInputStream(Main.handleServer.getImage())));
+    public void setData(ResultSet resultSet){
+    	try {
+			this.nom.setText(resultSet.getString("name"));
+			this.depart.setText(resultSet.getString("departure").split(" ")[0]);
+	    	this.heureDepart.setText(resultSet.getString("departureTime"));
+	    	this.arrivee.setText(resultSet.getString("arrival").split(" ")[0]);
+	    	this.place.setText(resultSet.getString("seat"));
+	    	this.montant.setText(resultSet.getString("amount"));
+	    	this.id.setText(resultSet.getString("id"));
+	    	this.heureArrivee.setText(resultSet.getString("departureDate"));
+	    	this.note.setText(String.valueOf(Math.round(resultSet.getDouble("mark") * 100.0) / 100.0));
+	    	Main.handleServer.write(new Handler<>(Keywords.getImageUser, null,resultSet.getString("picture")));
+	    	Utilitie.sleep(500);
+	    	this.image.setImage(new Image(new ByteArrayInputStream(Main.handleServer.getImage())));
+		} catch (SQLException | NullPointerException e) {
+			Utilitie.error(ItemController.class.getName(), e);
+		}
     }
 
 }

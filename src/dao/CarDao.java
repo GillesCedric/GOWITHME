@@ -93,7 +93,7 @@ public class CarDao extends Dao {
 	public void update(Object object) {
 		this.connectionDatabase();
 		Car car=(Car) object;
-		String sql="UPDATE cars SET brand=\""+car.getBrand()+"\",model=\""+car.getModel()+"\",color=\""+car.getColor()+"\",registration=\""+car.getRegistration()+"\",description=\""+car.getDescription()+"\",picture=\""+car.getPicture()+"\",isActive=\""+car.isActive()+"\",userId=\""+car.getUserId()+"\",createdAt=\""+car.getCreatedAt()+"\",updatedAt=\""+car.getUpdatedAt()+"\" WHERE id="+car.getId();
+		String sql="UPDATE cars SET brand=\""+car.getBrand()+"\",model=\""+car.getModel()+"\",color=\""+car.getColor()+"\",registration=\""+car.getRegistration()+"\",description=\""+car.getDescription()+"\",picture=\""+car.getPicture()+"\",isActive="+car.isActive()+",userId=\""+car.getUserId()+"\" WHERE id="+car.getId();
 		 try {
             PreparedStatement prepareStatement = connection.prepareStatement(sql);
             prepareStatement.execute();

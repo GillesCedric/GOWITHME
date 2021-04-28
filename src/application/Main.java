@@ -38,6 +38,8 @@ public class Main extends Application{
 	public static Stage newVoyageStage = new Stage();
 	public static Stage newPointStage = new Stage();
 	public static Stage newCarStage = new Stage();
+	public static Stage travelInsformationsStage = new Stage();
+	public static Stage paymentModeStage = new Stage();
 
 		@Override
 		public void start(Stage primaryStage) {
@@ -60,6 +62,8 @@ public class Main extends Application{
 				FXMLLoader travelContainer = new FXMLLoader(getClass().getResource("/views/NewTravelContainerForm.fxml"));
 				FXMLLoader travelPoint = new FXMLLoader(getClass().getResource("/views/NewTravelPointArretForm.fxml"));
 				FXMLLoader addCar = new FXMLLoader(getClass().getResource("/views/NewCarContainerForm.fxml"));
+				FXMLLoader travelInformations = new FXMLLoader(getClass().getResource("/views/TravelInformationsForm.fxml"));
+				FXMLLoader paymentMode = new FXMLLoader(getClass().getResource("/views/PaymentModeForm.fxml"));
 				
 				roots.add(login.load());
 				roots.add(acceuil.load());
@@ -67,6 +71,8 @@ public class Main extends Application{
 				roots.add(travelContainer.load());
 				roots.add(travelPoint.load());
 				roots.add(addCar.load());
+				roots.add(travelInformations.load());
+				roots.add(paymentMode.load());
 				
 				controllers.add(login.getController());
 				controllers.add(acceuil.getController());
@@ -74,6 +80,8 @@ public class Main extends Application{
 				controllers.add(travelContainer.getController());
 				controllers.add(travelPoint.getController());
 				controllers.add(addCar.getController());
+				controllers.add(travelInformations.getController());
+				controllers.add(paymentMode.getController());
 
 				stages.add(loginStage);
 				stages.add(acceuilStage);
@@ -81,6 +89,8 @@ public class Main extends Application{
 				stages.add(newVoyageStage);
 				stages.add(newPointStage);
 				stages.add(newCarStage);
+				stages.add(travelInsformationsStage);
+				stages.add(paymentModeStage);
 				
 				for(Stage s : stages) {
 					s.initStyle(StageStyle.UNDECORATED);

@@ -7,10 +7,9 @@ import java.net.URISyntaxException;
 
 public class Browser {
 
-    public static void open() {
+    public static void open(String url) {
         OUT("\nWelcome to Multi Brow Pop.\nThis aims to popup a browsers in multiple operating systems.\nGood luck!\n");
-
-        String url = "http://www.birdfolk.co.uk/cricmob";
+        
         OUT("We're going to this page: "+ url);
 
         String myOS = System.getProperty("os.name").toLowerCase();

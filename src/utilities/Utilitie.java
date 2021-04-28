@@ -8,7 +8,6 @@ import java.lang.management.OperatingSystemMXBean;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import application.Main;
-import controllers.NewTravelContainerFormController;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -34,7 +33,7 @@ import tray.notification.TrayNotification;
 public class Utilitie {
 	private static double x,y;
 	private static final int DURATION = 1;
-	private static final double DURATION2 = 0.5;
+	private static final double DURATION2 = DURATION/2;
 	public static final String EMAIL_REGEX = "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
 	public static final String PASSWORD_REGEX = "^(?=.*\\d).{8,16}$";
 	public static final String TEL_REGEX = "^\\+[0-9]+(6|2)[0-9]+";
@@ -212,6 +211,16 @@ public class Utilitie {
 			case "newCar" :
 				Main.stages.get(5).setScene(Main.scenes.get(5));
 				Main.stages.get(5).show();
+				lock.close();
+			break;
+			case "travelInformations" :
+				Main.stages.get(6).setScene(Main.scenes.get(6));
+				Main.stages.get(6).show();
+				lock.close();
+			break;
+			case "paymentMode" :
+				Main.stages.get(7).setScene(Main.scenes.get(7));
+				Main.stages.get(7).show();
 				lock.close();
 			break;
 		}

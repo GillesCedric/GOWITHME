@@ -20,6 +20,8 @@ public class Data {
     public static final String DBNAME = "gowithme";
     public static final String USERNAME = "root";
     public static final String PASSWORD = "";
-    public static final String PORT = "3308";
-    public static final String HOST = "localhost";
+    public static final String DBPORT = "3308";
+    public static final String DBHOST = "localhost";
+    public static final int PORT = 3000;
+    public static final String HOST = "127.0.0.1";
 }

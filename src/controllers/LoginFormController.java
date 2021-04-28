@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -68,6 +69,9 @@ public class LoginFormController implements Initializable{
 
 	    @FXML
 	    private FontAwesomeIcon closeBtn;
+	    
+	    @FXML
+	    private ImageView loader;
 
     @FXML
     void closeApp(MouseEvent event) {
@@ -97,6 +101,8 @@ public class LoginFormController implements Initializable{
 						User userConnected = new User(rs.getInt("id"), rs.getString("name"),rs.getString("lastName"),rs.getString("password"),rs.getString("picture"),rs.getBoolean("isAdmin"),rs.getBoolean("isActive"),rs.getTimestamp("createdAt"),rs.getTimestamp("updatedAt"));
 						if(Utilitie.checkPassword(password, userConnected.getPassword())) {
 							Main.userConnected = userConnected;
+							AcceuilFormController acceuilFormController = (AcceuilFormController)Main.controllers.get(1);
+							acceuilFormController.loadUser();
 							if(userConnected.isAdmin()) {
 								// @todo Open Admin Main Interface
 							}else { 
